@@ -9,7 +9,7 @@ set number
 set nowrap
 set cursorline
 let g:rehash256 = 1
-colorscheme brogrammer
+colorscheme moriarty
 set tabstop=4
 set shiftwidth=4
 set colorcolumn=80
@@ -18,6 +18,7 @@ set fillchars+=vert:\
 set list
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 set colorcolumn=80
+set ignorecase
 "	plug
 
 call plug#begin('~/.vim/plugged')
