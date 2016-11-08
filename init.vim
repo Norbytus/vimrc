@@ -19,6 +19,7 @@ set list
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 set colorcolumn=80
 set ignorecase
+setlocal  spell spelllang=ru
 "	plug
 
 call plug#begin('~/.vim/plugged')
@@ -54,6 +55,10 @@ Plug 'godlygeek/tabular'
 Plug 'sheerun/vim-polyglot'
 Plug 'eugen0329/vim-esearch'
 Plug 'ap/vim-css-color'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'easymotion/vim-easymotion'
+Plug 'isRuslan/vim-es6'
+Plug 'gregsexton/matchtag'
 
 call plug#end()
 
@@ -113,6 +118,7 @@ let g:NERDTreeIndicatorMapCustom = {
 
 "	vim-move
 
+let g:deoplete#enable_at_startup = 1
 let g:move_key_modifier = 'C'
 let mapleader = ","
 
@@ -136,11 +142,7 @@ nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
 nnoremap <Leader>a gg V G
-au BufRead,BufNewFile *.tpl set syntax=php
 "	/vim-move
+au BufRead,BufNewFile *.tpl set syntax=php
+au BufReadPost *.tpl set ft=html
 "
-function! SortLines() range
-    execute a:firstline . "," . a:lastline . 's/^\(.*\)$/\=strdisplaywidth( submatch(0) ) . " " . submatch(0)/'
-    execute a:firstline . "," . a:lastline . 'sort n'
-    execute a:firstline . "," . a:lastline . 's/^\d\+\s//'
-endfunction
