@@ -31,7 +31,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -57,9 +56,9 @@ Plug 'eugen0329/vim-esearch'
 Plug 'ap/vim-css-color'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'easymotion/vim-easymotion'
-Plug 'isRuslan/vim-es6'
 Plug 'gregsexton/matchtag'
-
+Plug 'neomake/neomake'
+Plug 'vim-scripts/Conque-GDB'
 call plug#end()
 
 "	/plug
@@ -122,6 +121,10 @@ let g:deoplete#enable_at_startup = 1
 let g:move_key_modifier = 'C'
 let mapleader = ","
 
+"neomake
+autocmd! BufWritePost * Neomake
+"neomake
+
 
 nnoremap <Leader>rlp :call PhpRenameLocalVariable()<CR>
 nnoremap <Leader>rcp :call PhpRenameClassVariable()<CR>
@@ -143,6 +146,6 @@ nnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
 nnoremap <Leader>a gg V G
 "	/vim-move
-au BufRead,BufNewFile *.tpl set syntax=php
 au BufReadPost *.tpl set ft=html
+au BufRead,BufNewFile *.tpl set syntax=php
 "
