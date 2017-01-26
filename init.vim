@@ -58,7 +58,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'easymotion/vim-easymotion'
 Plug 'gregsexton/matchtag'
 Plug 'neomake/neomake'
-Plug 'vim-scripts/Conque-GDB'
+Plug 'dyng/ctrlsf.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 "	/plug
@@ -69,8 +71,7 @@ set laststatus=2
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='bubblegum'
-
+let g:lightline = { 'colorscheme': 'moriarty' }
 "	/airline
 
 "	syntastic
@@ -78,6 +79,10 @@ let g:airline_theme='bubblegum'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+"foldding
+set foldmethod=indent
+"foldding
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -119,11 +124,19 @@ let g:NERDTreeIndicatorMapCustom = {
 
 let g:deoplete#enable_at_startup = 1
 let g:move_key_modifier = 'C'
-let mapleader = ","
+let mapleader = "\<Space>"
 
 "neomake
 autocmd! BufWritePost * Neomake
 "neomake
+
+" ultisnips
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" /ultisnips
 
 
 nnoremap <Leader>rlp :call PhpRenameLocalVariable()<CR>
@@ -138,6 +151,10 @@ nnoremap <Leader>pdu :call PhpDetectUnusedUseStatements()<CR>
 vnoremap <Leader>p== :call PhpAlignAssigns()<CR>
 nnoremap <Leader>psg :call PhpCreateSettersAndGetters()<CR>
 nnoremap <Leader>pda :call PhpDocAll()<CR>
+inoremap <A-h> <left>
+inoremap <A-j> <down>
+inoremap <A-k> <up>
+inoremap <A-l> <right>
 
 nnoremap <Leader>w :w<cr>
 nnoremap <Leader>e :wq<cr>
@@ -146,6 +163,6 @@ nnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
 nnoremap <Leader>a gg V G
 "	/vim-move
-au BufReadPost *.tpl set ft=html
+"au BufReadPost *.tpl set ft=html
 au BufRead,BufNewFile *.tpl set syntax=php
 "
