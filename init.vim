@@ -151,10 +151,18 @@ nnoremap <Leader>pdu :call PhpDetectUnusedUseStatements()<CR>
 vnoremap <Leader>p== :call PhpAlignAssigns()<CR>
 nnoremap <Leader>psg :call PhpCreateSettersAndGetters()<CR>
 nnoremap <Leader>pda :call PhpDocAll()<CR>
+
 inoremap <A-h> <left>
 inoremap <A-j> <down>
 inoremap <A-k> <up>
 inoremap <A-l> <right>
+
+inoremap <A-d> <C-o>d
+inoremap <A-x> <C-o>x
+inoremap <A-D> <C-o>D
+inoremap <A-X> <C-o>X
+inoremap <A-O> <C-o>O
+inoremap <A-o> <C-o>o
 
 nnoremap <Leader>w :w<cr>
 nnoremap <Leader>e :wq<cr>
