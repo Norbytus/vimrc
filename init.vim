@@ -9,9 +9,12 @@ set number
 set nowrap
 set cursorline
 let g:rehash256 = 1
-colorscheme moriarty
+set termguicolors
+colorscheme nova
+set background=dark
 set tabstop=4
 set shiftwidth=4
+"set expandtab
 set colorcolumn=80
 set listchars=tab:▸\ ,eol:¬
 set fillchars+=vert:\ 
@@ -71,7 +74,7 @@ set laststatus=2
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#enabled = 1
-let g:lightline = { 'colorscheme': 'moriarty' }
+let g:lightline = { 'colorscheme': 'nova' }
 "	/airline
 
 "	syntastic
@@ -151,10 +154,18 @@ nnoremap <Leader>pdu :call PhpDetectUnusedUseStatements()<CR>
 vnoremap <Leader>p== :call PhpAlignAssigns()<CR>
 nnoremap <Leader>psg :call PhpCreateSettersAndGetters()<CR>
 nnoremap <Leader>pda :call PhpDocAll()<CR>
+
 inoremap <A-h> <left>
 inoremap <A-j> <down>
 inoremap <A-k> <up>
 inoremap <A-l> <right>
+
+inoremap <A-d> <C-o>d
+inoremap <A-x> <C-o>x
+inoremap <A-D> <C-o>D
+inoremap <A-X> <C-o>X
+inoremap <A-O> <C-o>O
+inoremap <A-o> <C-o>o
 
 nnoremap <Leader>w :w<cr>
 nnoremap <Leader>e :wq<cr>
