@@ -1,5 +1,5 @@
-syntax on
 set keymap=russian-jcukenwin
+syntax on
 set iminsert=0
 set imsearch=0
 set autoread
@@ -166,3 +166,6 @@ nnoremap <Leader>a gg V G
 "au BufReadPost *.tpl set ft=html
 au BufRead,BufNewFile *.tpl set syntax=php
 "
+
+"fix problem with close tabs
+let g:nerdtree_tabs_synchronize_view = 0
