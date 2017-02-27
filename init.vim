@@ -9,9 +9,12 @@ set number
 set nowrap
 set cursorline
 let g:rehash256 = 1
-colorscheme moriarty
+set termguicolors
+colorscheme nova
+set background=dark
 set tabstop=4
 set shiftwidth=4
+"set expandtab
 set colorcolumn=80
 set listchars=tab:▸\ ,eol:¬
 set fillchars+=vert:\ 
@@ -71,7 +74,7 @@ set laststatus=2
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#enabled = 1
-let g:lightline = { 'colorscheme': 'moriarty' }
+let g:lightline = { 'colorscheme': 'nova' }
 "	/airline
 
 "	syntastic
