@@ -14,7 +14,7 @@ colorscheme nova
 set background=dark
 "set expandtab
 set colorcolumn=80
-set listchars=tab:▸\ ,eol:¬,trail:·
+set listchars=tab:⇢\ ,eol:¬,trail:·
 set fillchars+=vert:\ 
 set list
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
@@ -29,7 +29,7 @@ set expandtab
 set smartindent
 
 setlocal  spell spelllang=ru
-"	plug
+"   plug
 
 call plug#begin('~/.vim/plugged')
 
@@ -73,13 +73,13 @@ Plug 'honza/vim-snippets'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
-"	/plug
+"   /plug
 
-"	airline
+"   airline
 
-let g:indentLine_char = '▸'
+let g:indentLine_char = '⠂'
 let g:indentLine_color_term = 239
-let g:indentLine_color_gui = "#525965"
+let g:indentLine_color_gui = "#D32F30"
 let g:indentLine_color_tty_light = 7 " (default: 4)
 let g:indentLine_color_dark = 1 " (default: 2)
 
@@ -88,9 +88,9 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#enabled = 1
 let g:lightline = { 'colorscheme': 'nova' }
-"	/airline
+"   /airline
 
-"	syntastic
+"   syntastic
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -105,9 +105,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"	/syntastic
+"   /syntastic
 
-"	nerdtree
+"   nerdtree
 
 let NERDTreeWinSize = 25
 let g:NERDTreeDirArrows = 1
@@ -115,12 +115,12 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:nerdtree_tabs_open_on_console_startup = 1
 
-"	/nerdtree
+"   /nerdtree
 "
-"	emmet
-"	/emmet
+"   emmet
+"   /emmet
 
-"	nerdtree-git-plugin
+"   nerdtree-git-plugin
 
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -134,9 +134,9 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-"	/nerdtree-git-plugin
+"   /nerdtree-git-plugin
 
-"	vim-move
+"   vim-move
 
 let g:deoplete#enable_at_startup = 1
 let g:move_key_modifier = 'C'
@@ -190,7 +190,7 @@ nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
 nnoremap <Leader>a gg V G
-"	/vim-move
+"   /vim-move
 "au BufReadPost *.tpl set ft=html
 au BufRead,BufNewFile *.tpl set syntax=php
 
