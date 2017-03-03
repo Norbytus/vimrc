@@ -12,16 +12,22 @@ let g:rehash256 = 1
 set termguicolors
 colorscheme nova
 set background=dark
-set tabstop=4
-set shiftwidth=4
 "set expandtab
 set colorcolumn=80
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬,trail:·
 set fillchars+=vert:\ 
 set list
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 set colorcolumn=80
 set ignorecase
+
+"tab setting
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+set smartindent
+
 setlocal  spell spelllang=ru
 "	plug
 
@@ -64,11 +70,18 @@ Plug 'neomake/neomake'
 Plug 'dyng/ctrlsf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 "	/plug
 
 "	airline
+
+let g:indentLine_char = '▸'
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = "#525965"
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
 
 set laststatus=2
 let g:airline_left_sep = ''
@@ -141,6 +154,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " /ultisnips
 
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
 
 nnoremap <Leader>rlp :call PhpRenameLocalVariable()<CR>
 nnoremap <Leader>rcp :call PhpRenameClassVariable()<CR>
@@ -176,4 +193,6 @@ nnoremap <Leader>a gg V G
 "	/vim-move
 "au BufReadPost *.tpl set ft=html
 au BufRead,BufNewFile *.tpl set syntax=php
+
+autocmd! BufRead * retab
 "
