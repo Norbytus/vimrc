@@ -38,15 +38,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'ervandew/supertab'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'shawncplus/phpcomplete.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'myhere/vim-nodejs-complete'
 Plug 'matze/vim-move'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -54,11 +52,8 @@ Plug 'tpope/vim-sensible'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'Raimondi/delimitMate'
 Plug 'wting/rust.vim'
-Plug 'peterhoeg/vim-qml'
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'Ioannis-Kapoulas/vim-autoprefixer'
-Plug '2072/php-indenting-for-vim'
-Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'godlygeek/tabular'
 Plug 'sheerun/vim-polyglot'
 Plug 'eugen0329/vim-esearch'
@@ -71,9 +66,14 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Yggdroot/indentLine'
+Plug 'tobyS/pdv'
+Plug 'tobyS/vmustache'
 call plug#end()
 
 "   /plug
+
+"pdv plugin template path
+let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
 
 "   airline
 
@@ -154,24 +154,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " /ultisnips
 
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
-
-nnoremap <Leader>rlp :call PhpRenameLocalVariable()<CR>
-nnoremap <Leader>rcp :call PhpRenameClassVariable()<CR>
-nnoremap <Leader>prm :call PhpRenameMethod()<CR>
-nnoremap <Leader>ppeu :call PhpExtractUse()<CR>
-vnoremap <Leader>pec :call PhpExtractConst()<CR>
-nnoremap <Leader>pep :call PhpExtractClassProperty()<CR>
-vnoremap <Leader>pem :call PhpExtractMethod()<CR>
-nnoremap <Leader>pnp :call PhpCreateProperty()<CR>
-nnoremap <Leader>pdu :call PhpDetectUnusedUseStatements()<CR>
-vnoremap <Leader>p== :call PhpAlignAssigns()<CR>
-nnoremap <Leader>psg :call PhpCreateSettersAndGetters()<CR>
-nnoremap <Leader>pda :call PhpDocAll()<CR>
-
 inoremap <A-h> <left>
 inoremap <A-j> <down>
 inoremap <A-k> <up>
@@ -184,12 +166,10 @@ inoremap <A-X> <C-o>X
 inoremap <A-O> <C-o>O
 inoremap <A-o> <C-o>o
 
-nnoremap <Leader>w :w<cr>
-nnoremap <Leader>e :wq<cr>
-nnoremap <Leader>q :q!<cr>
-nnoremap <Leader>y "+y
-nnoremap <Leader>p "+p
-nnoremap <Leader>a gg V G
+"pdv hot keys start
+nnoremap <buffer><Leader>p :call pdv#DocumentWithSnip()<cr>
+"pdv hot keys end
+"
 "   /vim-move
 "au BufReadPost *.tpl set ft=html
 au BufRead,BufNewFile *.tpl set syntax=php
