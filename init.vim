@@ -90,22 +90,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:lightline = { 'colorscheme': 'nova' }
 "   /airline
 
-"   syntastic
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 "foldding
 set foldmethod=indent
 "foldding
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-"   /syntastic
 
 "   nerdtree
 
@@ -166,8 +153,10 @@ inoremap <A-X> <C-o>X
 inoremap <A-O> <C-o>O
 inoremap <A-o> <C-o>o
 
+nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+
 "pdv hot keys start
-nnoremap <buffer><Leader>p :call pdv#DocumentWithSnip()<cr>
+nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
 "pdv hot keys end
 "
 "   /vim-move
