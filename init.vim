@@ -90,22 +90,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:lightline = { 'colorscheme': 'nova' }
 "   /airline
 
-"   syntastic
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 "foldding
 set foldmethod=indent
 "foldding
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-"   /syntastic
 
 "   nerdtree
 
