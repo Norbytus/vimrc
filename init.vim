@@ -166,8 +166,10 @@ inoremap <A-X> <C-o>X
 inoremap <A-O> <C-o>O
 inoremap <A-o> <C-o>o
 
+nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+
 "pdv hot keys start
-nnoremap <buffer><Leader>p :call pdv#DocumentWithSnip()<cr>
+nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
 "pdv hot keys end
 "
 "   /vim-move
