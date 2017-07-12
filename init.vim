@@ -27,12 +27,13 @@ set shiftwidth=4
 set smarttab
 set expandtab
 set smartindent
+set relativenumber
 
 setlocal  spell spelllang=ru
 "   plug
 
 call plug#begin('~/.vim/plugged')
-
+Plug 'dsimidzija/vim-nerdtree-ignore'
 Plug 'mattn/emmet-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -57,7 +58,6 @@ Plug 'Ioannis-Kapoulas/vim-autoprefixer'
 Plug 'godlygeek/tabular'
 Plug 'sheerun/vim-polyglot'
 Plug 'eugen0329/vim-esearch'
-Plug 'ap/vim-css-color'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'easymotion/vim-easymotion'
 Plug 'gregsexton/matchtag'
@@ -66,14 +66,14 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Yggdroot/indentLine'
-Plug 'tobyS/pdv'
-Plug 'tobyS/vmustache'
+Plug 'johngrib/vim-game-code-break'
 call plug#end()
 
 "   /plug
 
 "pdv plugin template path
 let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
+let g:UltiSnipsSnippetDirectories=["~/git-repos/vimrs/UltiSnips"]
 
 "   airline
 
@@ -83,11 +83,11 @@ let g:indentLine_color_gui = "#D32F30"
 let g:indentLine_color_tty_light = 7 " (default: 4)
 let g:indentLine_color_dark = 1 " (default: 2)
 
-set laststatus=2
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline#extensions#tabline#enabled = 1
-let g:lightline = { 'colorscheme': 'nova' }
+"set laststatus=2
+"let g:airline_left_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline#extensions#tabline#enabled = 1
+"let g:lightline = { 'colorscheme': 'nova' }
 "   /airline
 
 "foldding
@@ -101,6 +101,7 @@ let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:nerdtree_tabs_open_on_console_startup = 1
+let NERDTreeIgnore=[ '^node_modules$' ]
 
 "   /nerdtree
 "
@@ -125,12 +126,13 @@ let g:NERDTreeIndicatorMapCustom = {
 
 "   vim-move
 
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 let g:move_key_modifier = 'C'
 let mapleader = "\<Space>"
 
 "neomake
 autocmd! BufWritePost * Neomake
+let g:neomake_rust_enabled_makers = []
 "neomake
 
 " ultisnips
@@ -154,11 +156,8 @@ inoremap <A-O> <C-o>O
 inoremap <A-o> <C-o>o
 
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>b :Tagbar<CR>
 
-"pdv hot keys start
-nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
-"pdv hot keys end
-"
 "   /vim-move
 "au BufReadPost *.tpl set ft=html
 au BufRead,BufNewFile *.tpl set syntax=php
