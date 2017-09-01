@@ -31,10 +31,10 @@ set relativenumber
 
 setlocal  spell spelllang=ru
 
-source plugins.vim
-source nerd_conf.vim
-source my_key_binding.vim
-source util_snip.vim
+source ~/git-repos/vimrc/plugins.vim
+source ~/git-repos/vimrc/nerd_conf.vim
+source ~/git-repos/vimrc/my_key_binding.vim
+source ~/git-repos/vimrc/util_snip.vim
 
 "pdv plugin template path
 let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
