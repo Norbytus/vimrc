@@ -10,9 +10,8 @@ set nowrap
 set cursorline
 let g:rehash256 = 1
 set termguicolors
-colorscheme nova
 set background=dark
-"set expandtab
+colorscheme nova
 set colorcolumn=80
 set listchars=tab:⇢\ ,eol:¬,trail:·
 set fillchars+=vert:\ 
@@ -21,7 +20,6 @@ set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNO
 set colorcolumn=80
 set ignorecase
 
-"tab setting
 set tabstop=4
 set shiftwidth=4
 set smarttab
@@ -29,43 +27,23 @@ set expandtab
 set smartindent
 set relativenumber
 
-setlocal  spell spelllang=ru
+set foldmethod=indent "Folding
+autocmd! BufRead * retab "replace all space on tab
 
-source ~/git-repos/vimrc/plugins.vim
-source ~/git-repos/vimrc/nerd_conf.vim
-source ~/git-repos/vimrc/my_key_binding.vim
-source ~/git-repos/vimrc/util_snip.vim
+setlocal spell spelllang=ru
 
-"pdv plugin template path
-let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
-let g:UltiSnipsSnippetDirectories=["~/git-repos/vimrs/UltiSnips"]
+source ~/git-repos/new_vim/vimrc/plugins.vim
 
-"   airline
+source ~/git-repos/new_vim/vimrc/plugin_config/nerd.vim
+source ~/git-repos/new_vim/vimrc/plugin_config/air_line.vim
+source ~/git-repos/new_vim/vimrc/plugin_config/ident_line.vim
+source ~/git-repos/new_vim/vimrc/plugin_config/deoplete.vim
+source ~/git-repos/new_vim/vimrc/plugin_config/lsp.vim
+source ~/git-repos/new_vim/vimrc/plugin_config/utilsnips.vim
 
-let g:indentLine_char = '⠂'
-let g:indentLine_color_term = 239
-let g:indentLine_color_gui = "#D32F30"
-let g:indentLine_color_tty_light = 7 " (default: 4)
-let g:indentLine_color_dark = 1 " (default: 2)
+source ~/git-repos/new_vim/vimrc/php/lsp.vim
+source ~/git-repos/new_vim/vimrc/php/phpqa.vim
 
-set laststatus=2
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline#extensions#tabline#enabled = 1
-let g:lightline = { 'colorscheme': 'nova' }
+source ~/git-repos/new_vim/vimrc/key_binding.vim
 
-"foldding
-set foldmethod=indent
-let g:deoplete#enable_at_startup = 1
-let g:move_key_modifier = 'C'
-let mapleader = "\<Space>"
 
-"neomake
-autocmd! BufWritePost * Neomake
-let g:neomake_rust_enabled_makers = []
-"neomake
-
-"   /vim-move
-"au BufReadPost *.tpl set ft=html
-au BufRead,BufNewFile *.tpl set syntax=php
-autocmd! BufRead * retab

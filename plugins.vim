@@ -1,36 +1,48 @@
 call plug#begin('~/.vim/plugged')
-Plug 'dsimidzija/vim-nerdtree-ignore'
-Plug 'mattn/emmet-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
-Plug 'ervandew/supertab'
-Plug 'mhinz/vim-signify'
-Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'jistr/vim-nerdtree-tabs'
+
 Plug 'terryma/vim-multiple-cursors'
-Plug 'matze/vim-move'
+
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+
+Plug 'airblade/vim-gitgutter'
+
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'Raimondi/delimitMate'
-Plug 'wting/rust.vim'
-Plug 'equalsraf/neovim-gui-shim'
-Plug 'Ioannis-Kapoulas/vim-autoprefixer'
+
+Plug 'Raimondi/delimitMate' "Auto close '['
+
+Plug 'Ioannis-Kapoulas/vim-autoprefixer' "Auto prefixer for css
+
 Plug 'godlygeek/tabular'
-Plug 'sheerun/vim-polyglot'
-Plug 'eugen0329/vim-esearch'
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'easymotion/vim-easymotion'
 Plug 'gregsexton/matchtag'
-Plug 'neomake/neomake'
+Plug 'easymotion/vim-easymotion'
 Plug 'dyng/ctrlsf.vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+
+Plug 'mattn/emmet-vim' "For html css.
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
-Plug 'johngrib/vim-game-code-break'
+Plug 'equalsraf/neovim-gui-shim'
+
+Plug 'altercation/vim-colors-solarized'
+Plug 'zanglg/nova.vim'
+Plug 'Yggdroot/LeaderF', { 'do': '.\install.sh' }
+
+Plug 'YaroslavMolchan/pdv'
+Plug 'tobyS/vmustache'
+Plug 'SirVer/ultisnips'
+
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+
+Plug 'joonty/vim-phpqa'
 call plug#end()
