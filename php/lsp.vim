@@ -1,1 +1,1 @@
-autocmd FileType php LanguageClientStart
+" autocmd FileType php LanguageClientStart
