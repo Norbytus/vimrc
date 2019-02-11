@@ -11,26 +11,21 @@ set cursorline
 let g:rehash256 = 1
 set termguicolors
 set background=dark
-"colorscheme nova
 color dracula
-set colorcolumn=80
 set listchars=tab:⇢\ ,eol:¬,trail:·
 set fillchars+=vert:\ 
 set list
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
-set colorcolumn=80
+set colorcolumn=80,120
 set ignorecase
-
 set tabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
 set smartindent
 set relativenumber
-
 set foldmethod=indent "Folding
 autocmd! BufRead * retab "replace all space on tab
-
 setlocal spell spelllang=ru
 
 call plug#begin('~/.vim/plugged')
@@ -86,11 +81,12 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ 'tag': '0.1.119'
     \ }
-" Plug 'TysonAndre/LanguageServer-phan-neovim',  {'do': 'composer install'}
 
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+Plug 'phpactor/ncm2-phpactor'
 
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -106,11 +102,9 @@ Plug 'ncm2/ncm2-cssomni'
 Plug 'ncm2/ncm2-html-subscope'
 Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
 Plug 'ncm2/ncm2-ultisnips'
-Plug 'filipekiss/ncm2-look.vim'
-" Plug 'stephpy/vim-php-cs-fixer'
+Plug 'ncm2/ncm2-gtags'
+" Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 
-" Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
-" Plug 'phpactor/ncm2-phpactor'
 call plug#end()
 
 let laststatus=2
@@ -124,9 +118,6 @@ let g:indentLine_color_term = 239
 let g:indentLine_color_gui = "#D32F30"
 let g:indentLine_color_tty_light = 7
 let g:indentLine_color_dark = 1
-
-" let g:ale_php_phpcbf_executable = 'phan'
-let g:ale_php_phan_use_client=0
 
 let NERDTreeWinSize = 25
 let g:NERDTreeDirArrows = 1
@@ -181,49 +172,23 @@ nnoremap <silent> g2 :call LanguageClient#textDocument_typeDefinition()<CR>
 " can be used to open the definition in a new pane.
 nnoremap <silent> <C-W>g1 :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
 nnoremap <silent> <C-W>g2 :call LanguageClient#textDocument_typeDefinition({'gotoCmd': 'split'})<CR>
-" let g:phan_analyzed_directory = '/home/alex/git-repos/vimrc/test_php/'
-" let g:phan_analyzed_directory = '/home/alex/sites/flowwow.loc/'
-" let g:phan_executable_path = '/usr/bin/phan'
-" let g:phan_additional_cli_flags = ['--strict-type-checking', '--plugin', 'InvokePHPNativeSyntaxCheckPlugin']
-autocmd FileType php setlocal omnifunc=phpactor#Complete
 
 set completeopt=noinsert,menuone,noselect
 " inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
 " c-j c-k for moving in snippet
-" let g:UltiSnipsExpandTrigger      = "<Plug>(ultisnips_expand)"
+let g:UltiSnipsExpandTrigger      = "<Plug>(ultisnips_expand)"
 let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
-let g:ncm2_look_enabled = 1
-"
-" Include use statement
-nmap <Leader>u :call phpactor#UseAdd()<CR>
-
-" Invoke the context menu
-nmap <Leader>mm :call phpactor#ContextMenu()<CR>
-
-" Invoke the navigation menu
-nmap <Leader>nn :call phpactor#Navigate()<CR>
-
-" Goto definition of class or class member under the cursor
-nmap <Leader>o :call phpactor#GotoDefinition()<CR>
-
-" Transform the classes in the current file
-nmap <Leader>tt :call phpactor#Transform()<CR>
-
-" Generate a new class (replacing the current file)
-nmap <Leader>cc :call phpactor#ClassNew()<CR>
-
-" Extract expression (normal mode)
-nmap <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
-
-" Extract expression from selection
-vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
-
-" Extract method from selection
-vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
-
 let g:gen_tags#gtags_default_map = 1
-" let g:php_cs_fixer_path = '/usr/local/bin/phpcs'
+let g:ale_linters = {
+\   'php': ['langserver', 'php', 'phpcs', 'phpmd', 'phpstan', 'psalm'],
+\}
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
