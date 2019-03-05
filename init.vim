@@ -85,7 +85,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 Plug 'phpactor/ncm2-phpactor'
 
 " enable ncm2 for all buffers
@@ -103,7 +103,8 @@ Plug 'ncm2/ncm2-html-subscope'
 Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
 Plug 'ncm2/ncm2-ultisnips'
 Plug 'ncm2/ncm2-gtags'
-" Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+Plug 'vim-vdebug/vdebug'
 
 call plug#end()
 
@@ -187,8 +188,24 @@ let g:ale_linters = {
 \   'php': ['langserver', 'php', 'phpcs', 'phpmd', 'phpstan', 'psalm'],
 \}
 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <leader>l :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+let g:ruby_host_prog = '/home/alex/.gem/ruby/2.6.0/bin/neovim-ruby-host'
+
+let g:vdebug_keymap = {
+            \    "run" : "<leader><F5>",
+            \    "run_to_cursor" : "<leader><F9>",
+            \    "step_over" : "<leader><F2>",
+            \    "step_into" : "<leader><F3>",
+            \    "step_out" : "<leader><F4>",
+            \    "close" : "<leader><F6>",
+            \    "detach" : "<leader><F7>",
+            \    "set_breakpoint" : "<leader><F10>",
+            \    "get_context" : "<leader>dc",
+            \    "eval_under_cursor" : "<leader>uc",
+            \    "eval_visual" : "<Leader>e",
+            \}
