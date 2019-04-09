@@ -79,7 +79,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
-    \ 'tag': '0.1.119'
     \ }
 
 Plug 'ncm2/ncm2'
