@@ -25,6 +25,8 @@ set expandtab
 set smartindent
 set relativenumber
 set foldmethod=indent "Folding
+set encoding=UTF-8
+set exrc
 autocmd! BufRead * retab "replace all space on tab
 setlocal spell spelllang=ru
 
@@ -90,8 +92,6 @@ Plug 'phpactor/ncm2-phpactor'
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-
-" IMPORTANTE: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 
 Plug 'ncm2/ncm2-bufword'
@@ -102,12 +102,13 @@ Plug 'ncm2/ncm2-html-subscope'
 Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
 Plug 'ncm2/ncm2-ultisnips'
 Plug 'ncm2/ncm2-gtags'
-Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 Plug 'vim-vdebug/vdebug'
 Plug 'janko/vim-test'
-Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
-Plug 'liuchengxu/vista.vim'
+Plug 'mhinz/vim-startify'
+
+" Or install latest release tag
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
 call plug#end()
 
@@ -124,6 +125,7 @@ let g:indentLine_color_tty_light = 7
 let g:indentLine_color_dark = 1
 
 let NERDTreeWinSize = 25
+let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -164,7 +166,7 @@ nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 
 " autocmd FileType php LanguageClientStart
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
     \ }
 autocmd FileType rs LanguageClientStart
 " Keyboard shortcuts to go to the definition or type definition.
@@ -185,9 +187,9 @@ let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
 let g:gen_tags#gtags_default_map = 1
-let g:ale_linters = {
-\   'php': ['langserver', 'php', 'phpcs', 'phpmd', 'phpstan', 'psalm'],
-\}
+" let g:ale_linters = {
+" \   'php': ['langserver', 'php', 'phpcs', 'phpmd', 'phpstan', 'psalm'],
+" \}
 
 nnoremap <leader>l :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
@@ -213,7 +215,6 @@ let g:vdebug_keymap = {
             \    "eval_under_cursor" : "<leader>uc",
             \    "eval_visual" : "<Leader>e",
             \}
-let g:session_autosave = 'yes'
 
 let g:vista_sidebar_position = 'vertical botright'
 
@@ -225,3 +226,26 @@ let g:vista_stay_on_open = 1
 let g:vista_blink = [2, 100]
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_fzf_preview = ['right:50%']
+let g:ale_php_phan_use_client = 1
+let g:ale_php_langserver_use_global = 1
+let g:ale_php_phan_executable = './vendor/bin/phan'
+set completefunc=emoji#complete
+hi Normal guibg=NONE ctermbg=NONE
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+nmap <leader>cd <Plug>(coc-diagnostic-info)
+nmap <leader>cg <Plug>(coc-definition)
+nmap <leader>cde <Plug>(coc-declaration)
+nmap <leader>cf <Plug>(coc-fix-current)
