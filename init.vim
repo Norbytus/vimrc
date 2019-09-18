@@ -11,7 +11,6 @@ set cursorline
 let g:rehash256 = 1
 set termguicolors
 set background=dark
-color dracula
 set listchars=tab:⇢\ ,eol:¬,trail:·
 set fillchars+=vert:\ 
 set list
@@ -31,7 +30,7 @@ autocmd! BufRead * retab "replace all space on tab
 setlocal spell spelllang=ru
 
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', {'tag': 'v2.5'}
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
@@ -88,7 +87,6 @@ Plug 'roxma/nvim-yarp'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 Plug 'phpactor/ncm2-phpactor'
-
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
@@ -101,14 +99,14 @@ Plug 'ncm2/ncm2-cssomni'
 Plug 'ncm2/ncm2-html-subscope'
 Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
 Plug 'ncm2/ncm2-ultisnips'
-Plug 'ncm2/ncm2-gtags'
+" Plug 'ncm2/ncm2-gtags'
 Plug 'vim-vdebug/vdebug'
 Plug 'janko/vim-test'
 Plug 'xolox/vim-misc'
 Plug 'mhinz/vim-startify'
 
 " Or install latest release tag
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim'
 
 call plug#end()
 
@@ -249,3 +247,4 @@ nmap <leader>cd <Plug>(coc-diagnostic-info)
 nmap <leader>cg <Plug>(coc-definition)
 nmap <leader>cde <Plug>(coc-declaration)
 nmap <leader>cf <Plug>(coc-fix-current)
+colorscheme nova
