@@ -104,6 +104,8 @@ Plug 'vim-vdebug/vdebug'
 Plug 'janko/vim-test'
 Plug 'xolox/vim-misc'
 Plug 'mhinz/vim-startify'
+Plug 'diepm/vim-rest-console'
+Plug 'tpope/vim-abolish'
 
 " Or install latest release tag
 Plug 'neoclide/coc.nvim'
@@ -248,3 +250,5 @@ nmap <leader>cg <Plug>(coc-definition)
 nmap <leader>cde <Plug>(coc-declaration)
 nmap <leader>cf <Plug>(coc-fix-current)
 colorscheme nova
+let g:vrc_trigger = '<C-i>'
+set ft=rest
