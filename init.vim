@@ -77,28 +77,28 @@ Plug 'w0rp/ale'
 
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'rust-lang/rust.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 
-Plug 'ncm2/ncm2'
+" Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
-Plug 'phpactor/ncm2-phpactor'
+" Plug 'phpactor/ncm2-phpactor'
 " enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
+" autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 set completeopt=noinsert,menuone,noselect
 
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-cssomni'
-Plug 'ncm2/ncm2-html-subscope'
-Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
-Plug 'ncm2/ncm2-ultisnips'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-tmux'
+" Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-cssomni'
+" Plug 'ncm2/ncm2-html-subscope'
+" Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
+" Plug 'ncm2/ncm2-ultisnips'
 " Plug 'ncm2/ncm2-gtags'
 Plug 'vim-vdebug/vdebug'
 Plug 'janko/vim-test'
@@ -165,17 +165,17 @@ nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 
 
 " autocmd FileType php LanguageClientStart
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
-    \ }
-autocmd FileType rs LanguageClientStart
+" let g:LanguageClient_serverCommands = {
+"     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
+"     \ }
+" autocmd FileType rs LanguageClientStart
 " Keyboard shortcuts to go to the definition or type definition.
-nnoremap <silent> g1 :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> g2 :call LanguageClient#textDocument_typeDefinition()<CR>
+" nnoremap <silent> g1 :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> g2 :call LanguageClient#textDocument_typeDefinition()<CR>
 " These shortcuts (Ctrl-W followed by the string 'g1', etc.)
 " can be used to open the definition in a new pane.
-nnoremap <silent> <C-W>g1 :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
-nnoremap <silent> <C-W>g2 :call LanguageClient#textDocument_typeDefinition({'gotoCmd': 'split'})<CR>
+" nnoremap <silent> <C-W>g1 :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
+" nnoremap <silent> <C-W>g2 :call LanguageClient#textDocument_typeDefinition({'gotoCmd': 'split'})<CR>
 
 set completeopt=noinsert,menuone,noselect
 " inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
