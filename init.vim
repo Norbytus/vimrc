@@ -23,7 +23,6 @@ set smarttab
 set expandtab
 set smartindent
 set relativenumber
-set foldmethod=indent "Folding
 set encoding=UTF-8
 set exrc
 autocmd! BufRead * retab "replace all space on tab
