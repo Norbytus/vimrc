@@ -152,14 +152,14 @@ nnoremap <leader>tt : Vista!<CR>
 let g:ruby_host_prog = '/home/alex/.gem/ruby/2.6.0/bin/neovim-ruby-host'
 
 let g:vdebug_keymap = {
-            \    "run" : "<leader><F5>",
-            \    "run_to_cursor" : "<leader><F9>",
-            \    "step_over" : "<leader><F2>",
-            \    "step_into" : "<leader><F3>",
-            \    "step_out" : "<leader><F4>",
-            \    "close" : "<leader><F6>",
-            \    "detach" : "<leader><F7>",
-            \    "set_breakpoint" : "<leader><F10>",
+            \    "run" : "<leader>1",
+            \    "run_to_cursor" : "<leader>9",
+            \    "step_over" : "<leader>2",
+            \    "step_into" : "<leader>3",
+            \    "step_out" : "<leader>4",
+            \    "close" : "<leader>6",
+            \    "detach" : "<leader>7",
+            \    "set_breakpoint" : "<leader>0",
             \    "get_context" : "<leader>dc",
             \    "eval_under_cursor" : "<leader>uc",
             \    "eval_visual" : "<Leader>e",
