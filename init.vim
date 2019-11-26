@@ -136,18 +136,9 @@ let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
 let g:gen_tags#gtags_default_map = 1
-" let g:ale_linters = {
-" \   'php': ['langserver', 'php', 'phpcs', 'phpmd', 'phpstan', 'psalm'],
-" \}
-
-nnoremap <leader>l :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-nnoremap <leader>t : Vista<CR>
-nnoremap <leader>tt : Vista!<CR>
+let g:ale_linters = {
+\   'php': ['langserver', 'php', 'phpcs', 'phpmd', 'phpstan', 'psalm'],
+\}
 
 let g:ruby_host_prog = '/home/alex/.gem/ruby/2.6.0/bin/neovim-ruby-host'
 
@@ -165,16 +156,6 @@ let g:vdebug_keymap = {
             \    "eval_visual" : "<Leader>e",
             \}
 
-let g:vista_sidebar_position = 'vertical botright'
-
-let g:vista_sidebar_width = 30
-let g:vista_echo_cursor = 1
-let g:vista_cursor_delay = 400
-let g:vista_close_on_jump = 0
-let g:vista_stay_on_open = 1
-let g:vista_blink = [2, 100]
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_fzf_preview = ['right:50%']
 let g:ale_php_phan_use_client = 1
 let g:ale_php_langserver_use_global = 1
 hi Normal guibg=NONE ctermbg=NONE
