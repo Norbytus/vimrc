@@ -1,0 +1,8 @@
+{
+    "intelephense.licenceKey": "KEY",
+    "intelephense.environment.phpVersion": "7.2.24",
+    "suggest.minTriggerInputLength": 2,
+    "coc.preferences.colorSupport": false,
+    "highlight.colors.enable": true,
+    "highlight.document.enable": true
+}
