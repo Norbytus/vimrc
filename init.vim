@@ -133,7 +133,7 @@ let g:UltiSnipsRemoveSelectModeMappings = 0
 
 let g:gen_tags#gtags_default_map = 1
 
-//let g:ruby_host_prog = '/home/alex/.gem/ruby/2.5.0/bin/neovim-ruby-host'
+"let g:ruby_host_prog = '/home/alex/.gem/ruby/2.5.0/bin/neovim-ruby-host'
 
 let g:vdebug_keymap = {
             \    "run" : "<leader>1",
