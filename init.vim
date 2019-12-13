@@ -1,4 +1,3 @@
-syntax on
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
@@ -22,9 +21,10 @@ set shiftwidth=4
 set smarttab
 set expandtab
 set smartindent
-set relativenumber
 set encoding=UTF-8
 set exrc
+set foldmethod=indent
+set nofoldenable
 autocmd! BufRead * retab "replace all space on tab
 setlocal spell spelllang=ru
 
@@ -51,27 +51,26 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'equalsraf/neovim-gui-shim'
-Plug 'altercation/vim-colors-solarized'
 Plug 'zanglg/nova.vim'
 Plug 'Yggdroot/LeaderF', { 'do': '.\install.sh'}
 Plug 'YaroslavMolchan/pdv' "Gen dock for php
 Plug 'tobyS/vmustache'
 Plug 'SirVer/ultisnips'
 Plug 'jsfaint/gen_tags.vim'
-Plug 'w0rp/ale'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'rust-lang/rust.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 Plug 'vim-vdebug/vdebug'
 Plug 'janko/vim-test'
 Plug 'xolox/vim-misc'
-Plug 'mhinz/vim-startify'
 Plug 'diepm/vim-rest-console'
 Plug 'tpope/vim-abolish'
 Plug 'neoclide/coc.nvim'
 Plug 'kaicataldo/material.vim'
+Plug 'evidens/vim-twig'
+Plug 'NLKNguyen/pipe.vim'
+Plug 'NLKNguyen/pipe-mysql.vim'
 
 call plug#end()
 
@@ -79,7 +78,7 @@ let laststatus=2
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='dracula'
+let g:airline_theme='nova'
 
 let g:indentLine_char = '⠂'
 let g:indentLine_color_term = 239
@@ -117,17 +116,14 @@ inoremap <A-j> <down>
 inoremap <A-k> <up>
 inoremap <A-l> <right>
 
-nmap <leader>gn <Plug>GitGutterNextHunk
-nmap <leader>gp <Plug>GitGutterPrevHunk
+nmap <leader>gn <Plug>(GitGutterNextHunk)
+nmap <leader>gp <Plug>(GitGutterPrevHunk)
 
 nnoremap <leader>p :call pdv#DocumentWithSnip()<CR>
 
 nnoremap <leader>tb :tags<CR>
 
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
-
-set completeopt=noinsert,menuone,noselect
-" inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
 " c-j c-k for moving in snippet
 let g:UltiSnipsExpandTrigger      = "<Plug>(ultisnips_expand)"
@@ -136,11 +132,8 @@ let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
 let g:gen_tags#gtags_default_map = 1
-let g:ale_linters = {
-\   'php': ['langserver', 'php', 'phpcs', 'phpmd', 'phpstan', 'psalm'],
-\}
 
-let g:ruby_host_prog = '/home/alex/.gem/ruby/2.6.0/bin/neovim-ruby-host'
+//let g:ruby_host_prog = '/home/alex/.gem/ruby/2.5.0/bin/neovim-ruby-host'
 
 let g:vdebug_keymap = {
             \    "run" : "<leader>1",
@@ -155,10 +148,6 @@ let g:vdebug_keymap = {
             \    "eval_under_cursor" : "<leader>uc",
             \    "eval_visual" : "<Leader>e",
             \}
-
-let g:ale_php_phan_use_client = 1
-let g:ale_php_langserver_use_global = 1
-hi Normal guibg=NONE ctermbg=NONE
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -180,16 +169,19 @@ function! s:show_documentation()
 endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-let g:coc_snippet_next = '<tab>'
-
 nmap <silent> cgd <Plug>(coc-definition)
 nmap <silent> cgy <Plug>(coc-type-definition)
 nmap <silent> cgi <Plug>(coc-implementation)
 nmap <silent> cgr <Plug>(coc-references)
+xmap <leader>cf  <Plug>(coc-format-selected)
+nmap <leader>cf  <Plug>(coc-format-selected)
+xmap <leader>ca  <Plug>(coc-codeaction-selected)
+nmap <leader>ca  <Plug>(coc-codeaction-selected)
+nmap <leader>cac  <Plug>(coc-codeaction)
+nmap <leader>cqf  <Plug>(coc-fix-current)
+nmap <leader>cd  <Plug>(coc-action-documentSymbols)
+nmap <leader>cr  <Plug>(coc-rename)
+nmap <leader>ce  <Plug>(coc-refactor)
 
 let g:material_theme_style = 'palenight'
 colorscheme material
-
-let g:vrc_trigger = '<C-i>'
-set ft=rest
-let g:coc_global_extensions=[ 'coc-omnisharp']
