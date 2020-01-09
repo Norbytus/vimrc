@@ -5,6 +5,7 @@ set autoread
 set updatetime=250
 set noswapfile
 set number
+set relativenumber
 set nowrap
 set cursorline
 let g:rehash256 = 1
@@ -23,10 +24,10 @@ set expandtab
 set smartindent
 set encoding=UTF-8
 set exrc
-set foldmethod=indent
-set nofoldenable
 autocmd! BufRead * retab "replace all space on tab
 setlocal spell spelllang=ru
+
+let mapleader = "\<Space>"
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive', {'tag': 'v2.5'}
@@ -51,13 +52,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'equalsraf/neovim-gui-shim'
-Plug 'zanglg/nova.vim'
 Plug 'Yggdroot/LeaderF', { 'do': '.\install.sh'}
 Plug 'YaroslavMolchan/pdv' "Gen dock for php
 Plug 'tobyS/vmustache'
 Plug 'SirVer/ultisnips'
 Plug 'jsfaint/gen_tags.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'rust-lang/rust.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -71,14 +70,16 @@ Plug 'kaicataldo/material.vim'
 Plug 'evidens/vim-twig'
 Plug 'NLKNguyen/pipe.vim'
 Plug 'NLKNguyen/pipe-mysql.vim'
-
+Plug 'liuchengxu/vista.vim'
+Plug 'swekaj/php-foldexpr.vim'
+Plug 'tyru/open-browser.vim'
+Plug 'weirongxu/plantuml-previewer.vim'
 call plug#end()
 
 let laststatus=2
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='nova'
 
 let g:indentLine_char = '⠂'
 let g:indentLine_color_term = 239
@@ -107,11 +108,7 @@ let g:NERDTreeIndicatorMapCustom = {
 
 let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
 
-
-let mapleader = "\<Space>"
-
-"Using arrow key in insert mode 'alt+arrow_key'
-inoremap <A-h> <left>
+"Using arrow key in insert mode 'alt+arrow_key' inoremap <A-h> <left>
 inoremap <A-j> <down>
 inoremap <A-k> <up>
 inoremap <A-l> <right>
@@ -121,8 +118,6 @@ nmap <leader>gp <Plug>(GitGutterPrevHunk)
 
 nnoremap <leader>p :call pdv#DocumentWithSnip()<CR>
 
-nnoremap <leader>tb :tags<CR>
-
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 
 " c-j c-k for moving in snippet
@@ -131,9 +126,7 @@ let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
-let g:gen_tags#gtags_default_map = 1
-
-"let g:ruby_host_prog = '/home/alex/.gem/ruby/2.5.0/bin/neovim-ruby-host'
+let g:ruby_host_prog = '/home/alex/.gem/ruby/2.5.0/bin/neovim-ruby-host'
 
 let g:vdebug_keymap = {
             \    "run" : "<leader>1",
@@ -154,11 +147,6 @@ inoremap <silent><expr> <TAB>
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -182,6 +170,27 @@ nmap <leader>cqf  <Plug>(coc-fix-current)
 nmap <leader>cd  <Plug>(coc-action-documentSymbols)
 nmap <leader>cr  <Plug>(coc-rename)
 nmap <leader>ce  <Plug>(coc-refactor)
+nmap <leader>t :Vista!!<CR>
 
 let g:material_theme_style = 'palenight'
 colorscheme material
+
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'coc'
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#enable_icon = 1
+
+
+let b:phpfold_use = 1
+let b:phpfold_group_iftry = 0
+let b:phpfold_group_args = 1
+let b:phpfold_group_case = 1
+let b:phpfold_heredocs = 1
+let b:phpfold_docblocks = 1
+let b:phpfold_doc_with_funcs = 1
+let b:phpfold_text = 1
+let b:phpfold_text_right_lines = 1
+let b:phpfold_text_percent = 0
+
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
