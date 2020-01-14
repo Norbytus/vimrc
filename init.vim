@@ -74,6 +74,8 @@ Plug 'liuchengxu/vista.vim'
 Plug 'swekaj/php-foldexpr.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'janko/vim-test'
 call plug#end()
 
 let laststatus=2
@@ -118,7 +120,7 @@ nmap <leader>gp <Plug>(GitGutterPrevHunk)
 
 nnoremap <leader>p :call pdv#DocumentWithSnip()<CR>
 
-nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>vr :source ~/.config/nvim/init.vim<CR>
 
 " c-j c-k for moving in snippet
 let g:UltiSnipsExpandTrigger      = "<Plug>(ultisnips_expand)"
@@ -170,7 +172,6 @@ nmap <leader>cqf  <Plug>(coc-fix-current)
 nmap <leader>cd  <Plug>(coc-action-documentSymbols)
 nmap <leader>cr  <Plug>(coc-rename)
 nmap <leader>ce  <Plug>(coc-refactor)
-nmap <leader>t :Vista!!<CR>
 
 let g:material_theme_style = 'palenight'
 colorscheme material
@@ -194,3 +195,9 @@ let b:phpfold_text_percent = 0
 
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
+let test#neovim#term_position = "topleft"
+nmap <leader>tn :TestNearest<CR>
+nmap <leader>tf :TestFile<CR>
+nmap <leader>ts :TestSuite<CR>
+nmap <leader>tl :TestLast<CR>
+nmap <leader>tv :TestVisit<CR>
