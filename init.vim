@@ -76,6 +76,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'janko/vim-test'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 let laststatus=2
@@ -201,3 +202,10 @@ nmap <leader>tf :TestFile<CR>
 nmap <leader>ts :TestSuite<CR>
 nmap <leader>tl :TestLast<CR>
 nmap <leader>tv :TestVisit<CR>
+
+nmap <leader>e :FloatermNew<CR>
+nmap <leader>et :FloatermToggle<CR>
+nmap <leader>ep :FloatermPrev<CR>
+nmap <leader>en :FloatermNext<CR>
+
+let g:floaterm_position = 'center'
