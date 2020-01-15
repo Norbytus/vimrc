@@ -48,8 +48,6 @@ Plug 'gregsexton/matchtag'
 Plug 'easymotion/vim-easymotion'
 Plug 'dyng/ctrlsf.vim'
 Plug 'mattn/emmet-vim' "For html css.
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'Yggdroot/LeaderF', { 'do': '.\install.sh'}
@@ -80,9 +78,6 @@ Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 let laststatus=2
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline#extensions#tabline#enabled = 1
 
 let g:indentLine_char = '⠂'
 let g:indentLine_color_term = 239
