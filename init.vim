@@ -75,6 +75,8 @@ Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'janko/vim-test'
 Plug 'voldikss/vim-floaterm'
+Plug 'matze/vim-move'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 let laststatus=2
@@ -204,3 +206,4 @@ nmap <leader>ep :FloatermPrev<CR>
 nmap <leader>en :FloatermNext<CR>
 
 let g:floaterm_position = 'center'
+let g:move_key_modifier = 'C'
