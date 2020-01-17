@@ -207,3 +207,15 @@ nmap <leader>en :FloatermNext<CR>
 
 let g:floaterm_position = 'center'
 let g:move_key_modifier = 'C'
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'relativepath', 'filetype', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+
