@@ -157,19 +157,13 @@ function! s:show_documentation()
 endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-nmap <silent> cgd <Plug>(coc-definition)
-nmap <silent> cgy <Plug>(coc-type-definition)
-nmap <silent> cgi <Plug>(coc-implementation)
-nmap <silent> cgr <Plug>(coc-references)
-xmap <leader>cf  <Plug>(coc-format-selected)
-nmap <leader>cf  <Plug>(coc-format-selected)
-xmap <leader>ca  <Plug>(coc-codeaction-selected)
-nmap <leader>ca  <Plug>(coc-codeaction-selected)
-nmap <leader>cac  <Plug>(coc-codeaction)
-nmap <leader>cqf  <Plug>(coc-fix-current)
-nmap <leader>cd  <Plug>(coc-action-documentSymbols)
-nmap <leader>cr  <Plug>(coc-rename)
-nmap <leader>ce  <Plug>(coc-refactor)
+nmap gd <Plug>(coc-definition)
+nmap gy <Plug>(coc-type-definition)
+nmap gi <Plug>(coc-implementation)
+nmap gr <Plug>(coc-references)
+xmap cf <Plug>(coc-format-selected)
+nmap cr <Plug>(coc-rename)
+nmap ce <Plug>(coc-refactor)
 
 let g:material_theme_style = 'palenight'
 colorscheme material
@@ -212,7 +206,7 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'relativepath', 'filetype', 'modified' ] ]
+      \             [ 'gitbranch', 'relativepath', 'filetype', 'modified', 'readonly' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head'
