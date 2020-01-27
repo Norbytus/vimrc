@@ -77,6 +77,7 @@ Plug 'janko/vim-test'
 Plug 'voldikss/vim-floaterm'
 Plug 'matze/vim-move'
 Plug 'itchyny/lightline.vim'
+Plug 'aperezdc/vim-template'
 call plug#end()
 
 let laststatus=2
