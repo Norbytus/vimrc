@@ -26,6 +26,7 @@ set encoding=UTF-8
 set exrc
 autocmd! BufRead * retab "replace all space on tab
 setlocal spell spelllang=ru
+set autoread au CursorHold * checktime
 
 let mapleader = "\<Space>"
 
@@ -163,7 +164,7 @@ nmap gy <Plug>(coc-type-definition)
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
 xmap cf <Plug>(coc-format-selected)
-nmap cr <Plug>(coc-rename)
+nmap <leader>cr <Plug>(coc-rename)
 nmap ce <Plug>(coc-refactor)
 
 let g:material_theme_style = 'palenight'
