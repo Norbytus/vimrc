@@ -26,7 +26,8 @@ set encoding=UTF-8
 set exrc
 autocmd! BufRead * retab "replace all space on tab
 setlocal spell spelllang=ru
-set autoread au CursorHold * checktime
+set autoread
+au CursorHold * checktime
 
 let mapleader = "\<Space>"
 
