@@ -56,7 +56,6 @@ Plug 'Yggdroot/LeaderF', { 'do': '.\install.sh'}
 Plug 'YaroslavMolchan/pdv' "Gen dock for php
 Plug 'tobyS/vmustache'
 Plug 'SirVer/ultisnips'
-Plug 'jsfaint/gen_tags.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -75,7 +74,6 @@ Plug 'swekaj/php-foldexpr.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'janko/vim-test'
 Plug 'voldikss/vim-floaterm'
 Plug 'matze/vim-move'
 Plug 'itchyny/lightline.vim'
