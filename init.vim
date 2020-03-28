@@ -78,6 +78,8 @@ Plug 'voldikss/vim-floaterm'
 Plug 'matze/vim-move'
 Plug 'itchyny/lightline.vim'
 Plug 'aperezdc/vim-template'
+Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install --no-dev -o'}
+Plug 'kkoomen/vim-doge'
 call plug#end()
 
 let laststatus=2
@@ -140,7 +142,7 @@ let g:vdebug_keymap = {
             \    "set_breakpoint" : "<leader>0",
             \    "get_context" : "<leader>dc",
             \    "eval_under_cursor" : "<leader>uc",
-            \    "eval_visual" : "<Leader>e",
+            \    "eval_visual" : "<Leader>de",
             \}
 
 inoremap <silent><expr> <TAB>
@@ -214,3 +216,10 @@ let g:lightline = {
       \ },
       \ }
 
+nmap <leader>cf <Plug>CtrlSFCwordPath<CR>
+
+nmap <Leader>ai :PhpactorImportClass<CR>
+nmap <Leader>an :PhpactorClassNew<CR>
+nmap <Leader>aci :PhpactorClassInflect<CR>
+nmap <leader>ag :PhpactorGenerateAccessors<CR>
+nmap <leader>at :call phpactor#Transform()<CR>
