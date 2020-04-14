@@ -64,7 +64,7 @@ Plug 'janko/vim-test'
 Plug 'xolox/vim-misc'
 Plug 'diepm/vim-rest-console'
 Plug 'tpope/vim-abolish'
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'tag': 'v0.0.76'}
 Plug 'kaicataldo/material.vim'
 Plug 'evidens/vim-twig'
 Plug 'NLKNguyen/pipe.vim'
@@ -80,6 +80,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'aperezdc/vim-template'
 Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install --no-dev -o'}
 Plug 'kkoomen/vim-doge'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 call plug#end()
 
 let laststatus=2
@@ -95,7 +97,7 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-let g:nerdtree_tabs_open_on_console_startup = 1
+" let g:nerdtree_tabs_open_on_console_startup = 1
 
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -223,3 +225,5 @@ nmap <Leader>an :PhpactorClassNew<CR>
 nmap <Leader>aci :PhpactorClassInflect<CR>
 nmap <leader>ag :PhpactorGenerateAccessors<CR>
 nmap <leader>at :call phpactor#Transform()<CR>
+let g:ranger_map_keys = 0
+map <leader>F :RangerNewTab<CR>
