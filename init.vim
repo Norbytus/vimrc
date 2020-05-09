@@ -78,12 +78,13 @@ Plug 'voldikss/vim-floaterm'
 Plug 'matze/vim-move'
 Plug 'itchyny/lightline.vim'
 Plug 'aperezdc/vim-template'
-Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install --no-dev -o'}
+Plug 'phpactor/phpactor', {'tag': '0.14.1', 'for': 'php', 'do': 'composer install --no-dev -o'}
 Plug 'kkoomen/vim-doge'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'sakhnik/nvim-gdb'
 call plug#end()
 
 let laststatus=2
@@ -164,13 +165,16 @@ function! s:show_documentation()
 endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-nmap gd <Plug>(coc-definition)
-nmap gy <Plug>(coc-type-definition)
-nmap gi <Plug>(coc-implementation)
-nmap gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 xmap cf <Plug>(coc-format-selected)
 nmap <leader>cr <Plug>(coc-rename)
 nmap ce <Plug>(coc-refactor)
+nnoremap <silent> <space>a  :CocAction<cr>
 
 let g:material_theme_style = 'palenight'
 colorscheme material
@@ -213,12 +217,14 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'relativepath', 'filetype', 'modified', 'readonly' ] ]
+      \             [ 'gitbranch', 'relativepath', 'filetype', 'modified', 'readonly', 'cocstatus' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'fugitive#head',
+      \   'cocstatus': 'coc#status',
       \ },
       \ }
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 nmap <leader>cf <Plug>CtrlSFCwordPath<CR>
 
@@ -229,3 +235,5 @@ nmap <leader>ag :PhpactorGenerateAccessors<CR>
 nmap <leader>at :call phpactor#Transform()<CR>
 let g:ranger_map_keys = 0
 map <leader>F :RangerNewTab<CR>
+let g:Lf_UseMemoryCache = 0
+autocmd CursorHold * silent call CocActionAsync('highlight')
