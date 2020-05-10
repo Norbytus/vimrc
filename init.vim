@@ -33,10 +33,6 @@ let mapleader = "\<Space>"
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive', {'tag': 'v2.5'}
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'scrooloose/nerdcommenter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
@@ -85,6 +81,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'sakhnik/nvim-gdb'
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 let laststatus=2
@@ -94,25 +91,6 @@ let g:indentLine_color_term = 239
 let g:indentLine_color_gui = "#D32F30"
 let g:indentLine_color_tty_light = 7
 let g:indentLine_color_dark = 1
-
-let NERDTreeWinSize = 25
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-" let g:nerdtree_tabs_open_on_console_startup = 1
-
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-\ }
 
 let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
 
@@ -172,7 +150,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 xmap cf <Plug>(coc-format-selected)
-nmap <leader>cr <Plug>(coc-rename)
+nmap <silent>cr <Plug>(coc-rename)
 nmap ce <Plug>(coc-refactor)
 nnoremap <silent> <space>a  :CocAction<cr>
 
