@@ -72,7 +72,7 @@ Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'voldikss/vim-floaterm'
 Plug 'matze/vim-move'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'aperezdc/vim-template'
 Plug 'phpactor/phpactor', {'tag': '0.14.1', 'for': 'php', 'do': 'composer install --no-dev -o'}
 Plug 'kkoomen/vim-doge'
@@ -84,6 +84,8 @@ Plug 'sakhnik/nvim-gdb'
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 let laststatus=2
@@ -193,18 +195,18 @@ nmap <leader>en :FloatermNext<CR>
 let g:floaterm_position = 'center'
 let g:move_key_modifier = 'C'
 
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'relativepath', 'filetype', 'modified', 'readonly', 'cocstatus' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'cocstatus': 'coc#status',
-      \ },
-      \ }
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'gitbranch', 'relativepath', 'filetype', 'modified', 'readonly', 'cocstatus' ] ]
+"       \ },
+"       \ 'component_function': {
+"       \   'gitbranch': 'fugitive#head',
+"       \   'cocstatus': 'coc#status',
+"       \ },
+"       \ }
+" autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 nmap <leader>cf <Plug>CtrlSFCwordPath<CR>
 
@@ -217,3 +219,17 @@ let g:ranger_map_keys = 0
 map <leader>F :RangerNewTab<CR>
 let g:Lf_UseMemoryCache = 0
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+set laststatus=2
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='bubblegum'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tab_count = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#coc#enabled = 1
