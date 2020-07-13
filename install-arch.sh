@@ -1,5 +1,4 @@
 #!/bin/sh
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 sudo pacman -S xclip nodejs ctags npm rubygems python2-pip python-pip
 yay -S ibexo liberation-fonts-ttf global
