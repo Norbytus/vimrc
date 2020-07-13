@@ -60,7 +60,7 @@ Plug 'janko/vim-test'
 Plug 'xolox/vim-misc'
 Plug 'diepm/vim-rest-console'
 Plug 'tpope/vim-abolish'
-Plug 'neoclide/coc.nvim', {'tag': 'v0.0.76'}
+Plug 'neoclide/coc.nvim'
 Plug 'kaicataldo/material.vim'
 Plug 'evidens/vim-twig'
 Plug 'NLKNguyen/pipe.vim'
@@ -72,9 +72,8 @@ Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'voldikss/vim-floaterm'
 Plug 'matze/vim-move'
-" Plug 'itchyny/lightline.vim'
 Plug 'aperezdc/vim-template'
-Plug 'phpactor/phpactor', {'tag': '0.14.1', 'for': 'php', 'do': 'composer install --no-dev -o'}
+Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-dev -o'}
 Plug 'kkoomen/vim-doge'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
@@ -86,6 +85,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 let laststatus=2
@@ -195,19 +195,6 @@ nmap <leader>en :FloatermNext<CR>
 let g:floaterm_position = 'center'
 let g:move_key_modifier = 'C'
 
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat',
-"       \ 'active': {
-"       \   'left': [ [ 'mode', 'paste' ],
-"       \             [ 'gitbranch', 'relativepath', 'filetype', 'modified', 'readonly', 'cocstatus' ] ]
-"       \ },
-"       \ 'component_function': {
-"       \   'gitbranch': 'fugitive#head',
-"       \   'cocstatus': 'coc#status',
-"       \ },
-"       \ }
-" autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
 nmap <leader>cf <Plug>CtrlSFCwordPath<CR>
 
 nmap <Leader>ai :PhpactorImportClass<CR>
@@ -233,3 +220,5 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#coc#enabled = 1
+
+let g:go_doc_popup_window = 1
