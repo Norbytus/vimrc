@@ -32,7 +32,7 @@ au CursorHold * checktime
 let mapleader = "\<Space>"
 
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-fugitive', {'tag': 'v2.5'}
+Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
@@ -73,8 +73,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'voldikss/vim-floaterm'
 Plug 'matze/vim-move'
 Plug 'aperezdc/vim-template'
-Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-dev -o'}
-Plug 'kkoomen/vim-doge'
+Plug 'phpactor/phpactor', {'for': 'php', 'tag': '0.16.2', 'do': 'composer install --no-dev -o'}
+Plug 'kkoomen/vim-doge', {'tag': 'v2.6.0'}
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-dadbod'
@@ -199,6 +199,7 @@ nmap <leader>cf <Plug>CtrlSFCwordPath<CR>
 
 nmap <Leader>ai :PhpactorImportClass<CR>
 nmap <Leader>an :PhpactorClassNew<CR>
+nmap <Leader>am :PhpactorMoveFile<CR>
 nmap <Leader>aci :PhpactorClassInflect<CR>
 nmap <leader>ag :PhpactorGenerateAccessors<CR>
 nmap <leader>at :call phpactor#Transform()<CR>
