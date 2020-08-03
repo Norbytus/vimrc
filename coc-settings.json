@@ -1,8 +1,54 @@
 {
     "intelephense.licenceKey": "KEY",
-    "intelephense.environment.phpVersion": "7.2.24",
+    "intelephense.environment.phpVersion": "7.4",
     "suggest.minTriggerInputLength": 2,
-    "coc.preferences.colorSupport": false,
+    "coc.preferences.colorSupport": true,
     "highlight.colors.enable": true,
-    "highlight.document.enable": true
+    "highlight.document.enable": true,
+    "coc.preferences.formatOnSaveFiletypes": ["php", "json"],
+    "diagnostic-languageserver.filetypes": {
+        "php": ["phpcs", "phpstan"]
+    },
+    "diagnostic-languageserver.linters": {
+        "phpcs": {
+            "command": "./vendor/bin/phpcs",
+            "debounce": 100,
+            "rootPatterns": ["composer.json", "composer.lock", "vendor", ".git"],
+            "args": ["--report=emacs", "-s", "-"],
+            "offsetLine": 0,
+            "offsetColumn": 0,
+            "sourceName": "phpcs",
+            "formatLines": 1,
+            "formatPattern": [
+                "^.*:(\\d+):(\\d+):\\s+(.*)\\s+-\\s+(.*)(\\r|\\n)*$",
+                {
+                    "line": 1,
+                    "column": 2,
+                    "message": 4,
+                    "security": 3
+                }
+            ],
+            "securities": {
+                "error": "error",
+                "warning": "warning"
+            }
+        },
+        "phpstan": {
+            "command": "./vendor/bin/phpstan",
+            "debounce": 100,
+            "rootPatterns": [ "composer.json", "composer.lock", "vendor", ".git" ],
+            "args": [ "analyze", "--error-format", "raw", "--no-progress", "%file" ],
+            "offsetLine": 0,
+            "offsetColumn": 0,
+            "sourceName": "phpstan",
+            "formatLines": 1,
+            "formatPattern": [
+                "^[^:]+:(\\d+):(.*)(\\r|\\n)*$",
+                {
+                    "line": 1,
+                    "message": 2
+                }
+            ]
+        }
+    }
 }
