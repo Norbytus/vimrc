@@ -6,6 +6,7 @@
     "highlight.colors.enable": true,
     "highlight.document.enable": true,
     "coc.preferences.formatOnSaveFiletypes": ["php", "json"],
+    "intelephense.format.enable": true,
     "diagnostic-languageserver.filetypes": {
         "php": ["phpcs", "phpstan"]
     },
@@ -49,6 +50,18 @@
                     "message": 2
                 }
             ]
+        }
+    },
+    "diagnostic-languageserver.formatFiletypes": {
+        "php": ["phpcbf"]
+    },
+    "diagnostic-languageserver.formatters": {
+        "phpcbf": {
+            "command": "./vendor/bin/phpcbf",
+            "rootPatterns": ["composer.json", "composer.lock", "vendor", ".git"],
+            "args": ["%file"],
+            "isStdout": false,
+            "doesWriteToFile": true
         }
     }
 }
