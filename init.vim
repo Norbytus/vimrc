@@ -54,14 +54,12 @@ Plug 'tobyS/vmustache'
 Plug 'SirVer/ultisnips'
 Plug 'rust-lang/rust.vim'
 Plug 'roxma/nvim-yarp'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'vim-vdebug/vdebug'
 Plug 'janko/vim-test'
 Plug 'xolox/vim-misc'
 Plug 'diepm/vim-rest-console'
 Plug 'tpope/vim-abolish'
 Plug 'neoclide/coc.nvim'
-Plug 'kaicataldo/material.vim'
+Plug 'kaicataldo/material.vim', {'branch': 'main'}
 Plug 'evidens/vim-twig'
 Plug 'NLKNguyen/pipe.vim'
 Plug 'NLKNguyen/pipe-mysql.vim'
@@ -80,12 +78,17 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'sakhnik/nvim-gdb'
-Plug 'mhinz/vim-startify'
+Plug 'vim-vdebug/vdebug'
+" Plug 'mhinz/vim-startify'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'APZelos/blamer.nvim'
+Plug 'takac/vim-hardtime'
+Plug 'puremourning/vimspector'
+Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 call plug#end()
 
 let laststatus=2
@@ -118,20 +121,6 @@ let g:UltiSnipsRemoveSelectModeMappings = 0
 
 let g:ruby_host_prog = '/home/alex/.gem/ruby/2.5.0/bin/neovim-ruby-host'
 
-let g:vdebug_keymap = {
-            \    "run" : "<leader>1",
-            \    "run_to_cursor" : "<leader>9",
-            \    "step_over" : "<leader>2",
-            \    "step_into" : "<leader>3",
-            \    "step_out" : "<leader>4",
-            \    "close" : "<leader>6",
-            \    "detach" : "<leader>7",
-            \    "set_breakpoint" : "<leader>0",
-            \    "get_context" : "<leader>dc",
-            \    "eval_under_cursor" : "<leader>uc",
-            \    "eval_visual" : "<Leader>de",
-            \}
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -158,7 +147,7 @@ nmap <silent>cr <Plug>(coc-rename)
 nmap ce <Plug>(coc-refactor)
 nnoremap <silent> <space>a  :CocAction<cr>
 
-let g:material_theme_style = 'palenight'
+let g:material_theme_style = 'darker'
 colorscheme material
 
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -223,3 +212,22 @@ let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#coc#enabled = 1
 
 let g:go_doc_popup_window = 1
+
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" let g:blamer_enabled = 1
+" let g:hardtime_default_on = 1
+let g:vimspector_enable_mappings = 'HUMAN'
+let g:vdebug_keymap = {
+            \    "run" : "<leader>1",
+            \    "run_to_cursor" : "<leader>9",
+            \    "step_over" : "<leader>2",
+            \    "step_into" : "<leader>3",
+            \    "step_out" : "<leader>4",
+            \    "close" : "<leader>6",
+            \    "detach" : "<leader>7",
+            \    "set_breakpoint" : "<leader>0",
+            \    "get_context" : "<leader>dc",
+            \    "eval_under_cursor" : "<leader>uc",
+            \    "eval_visual" : "<Leader>de",
+            \}
