@@ -99,8 +99,6 @@ inoremap <A-l> <right>
 nmap <leader>gn <Plug>(GitGutterNextHunk)
 nmap <leader>gp <Plug>(GitGutterPrevHunk)
 
-nnoremap <leader>p :call pdv#DocumentWithSnip()<CR>
-
 nnoremap <leader>vr :source ~/.config/nvim/init.vim<CR>
 
 " c-j c-k for moving in snippet
@@ -208,3 +206,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " let g:blamer_enabled = 1
 " let g:hardtime_default_on = 1
 let g:vimspector_enable_mappings = 'HUMAN'
+
+let g:doge_php_settings = {
+\  'resolve_fqn': 0
+\}
