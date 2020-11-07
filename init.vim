@@ -79,7 +79,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'APZelos/blamer.nvim'
 Plug 'takac/vim-hardtime'
 Plug 'puremourning/vimspector'
-Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 call plug#end()
 
 let laststatus=2
