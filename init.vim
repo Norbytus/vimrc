@@ -210,3 +210,9 @@ let g:vimspector_enable_mappings = 'HUMAN'
 let g:doge_php_settings = {
 \  'resolve_fqn': 0
 \}
+let g:vimspector_sign_priority = {
+  \    'vimspectorBP':         999,
+  \    'vimspectorBPCond':     999,
+  \    'vimspectorBPDisabled': 999,
+  \    'vimspectorPC':         999,
+  \ }
