@@ -49,7 +49,6 @@ Plug 'mattn/emmet-vim' "For html css.
 Plug 'Yggdroot/indentLine'
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'Yggdroot/LeaderF', { 'do': '.\install.sh'}
-Plug 'YaroslavMolchan/pdv' "Gen dock for php
 Plug 'tobyS/vmustache'
 Plug 'SirVer/ultisnips'
 Plug 'rust-lang/rust.vim'
@@ -60,26 +59,18 @@ Plug 'diepm/vim-rest-console'
 Plug 'tpope/vim-abolish'
 Plug 'neoclide/coc.nvim'
 Plug 'kaicataldo/material.vim', {'branch': 'main'}
-Plug 'evidens/vim-twig'
-Plug 'NLKNguyen/pipe.vim'
-Plug 'NLKNguyen/pipe-mysql.vim'
-Plug 'liuchengxu/vista.vim'
 Plug 'swekaj/php-foldexpr.vim'
 Plug 'tyru/open-browser.vim'
-Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'voldikss/vim-floaterm'
 Plug 'matze/vim-move'
 Plug 'aperezdc/vim-template'
 Plug 'phpactor/phpactor', {'for': 'php', 'tag': '0.16.2', 'do': 'composer install --no-dev -o'}
-Plug 'kkoomen/vim-doge', {'tag': 'v2.6.0'}
+Plug 'kkoomen/vim-doge'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'sakhnik/nvim-gdb'
-Plug 'vim-vdebug/vdebug'
-" Plug 'mhinz/vim-startify'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
@@ -218,16 +209,3 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " let g:blamer_enabled = 1
 " let g:hardtime_default_on = 1
 let g:vimspector_enable_mappings = 'HUMAN'
-let g:vdebug_keymap = {
-            \    "run" : "<leader>1",
-            \    "run_to_cursor" : "<leader>9",
-            \    "step_over" : "<leader>2",
-            \    "step_into" : "<leader>3",
-            \    "step_out" : "<leader>4",
-            \    "close" : "<leader>6",
-            \    "detach" : "<leader>7",
-            \    "set_breakpoint" : "<leader>0",
-            \    "get_context" : "<leader>dc",
-            \    "eval_under_cursor" : "<leader>uc",
-            \    "eval_visual" : "<Leader>de",
-            \}
