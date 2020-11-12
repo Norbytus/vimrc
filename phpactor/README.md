@@ -1,5 +1,5 @@
 # Templates for php classes
 In project root run
-``bash
+```ash
     ln -sf `pwd`/templates ./.phpactor
 ```
