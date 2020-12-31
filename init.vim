@@ -75,10 +75,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'APZelos/blamer.nvim'
-Plug 'takac/vim-hardtime'
 Plug 'puremourning/vimspector'
+Plug 'lyokha/vim-xkbswitch'
 call plug#end()
 
 let laststatus=2
@@ -216,3 +215,5 @@ let g:vimspector_sign_priority = {
   \    'vimspectorBPDisabled': 999,
   \    'vimspectorPC':         999,
   \ }
+
+let g:XkbSwitchEnabled = 1
