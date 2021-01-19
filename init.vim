@@ -78,6 +78,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'APZelos/blamer.nvim'
 Plug 'puremourning/vimspector'
 Plug 'lyokha/vim-xkbswitch'
+Plug 'jdsimcoe/abstract.vim'
+Plug 'Badacadabra/vim-archery'
+Plug 'dhruvasagar/vim-open-url'
 call plug#end()
 
 let laststatus=2
@@ -188,7 +191,8 @@ set laststatus=2
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='bubblegum'
+" let g:airline_theme='bubblegum'
+let g:airline_theme = 'archery'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_buffers = 0
@@ -217,3 +221,4 @@ let g:vimspector_sign_priority = {
   \ }
 
 let g:XkbSwitchEnabled = 1
+let g:open_url_browser_default = "firefox-developer-edition"
