@@ -65,9 +65,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'voldikss/vim-floaterm'
 Plug 'matze/vim-move'
 Plug 'aperezdc/vim-template'
-Plug 'phpactor/phpactor', {'for': 'php', 'tag': '0.16.2', 'do': 'composer install --no-dev -o'}
+Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
 Plug 'kkoomen/vim-doge'
-Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
@@ -81,6 +80,9 @@ Plug 'lyokha/vim-xkbswitch'
 Plug 'jdsimcoe/abstract.vim'
 Plug 'Badacadabra/vim-archery'
 Plug 'dhruvasagar/vim-open-url'
+Plug 'Xuyuanp/scrollbar.nvim'
+Plug 'kevinhwang91/rnvimr'
+Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 call plug#end()
 
 let laststatus=2
@@ -182,8 +184,6 @@ nmap <Leader>am :PhpactorMoveFile<CR>
 nmap <Leader>aci :PhpactorClassInflect<CR>
 nmap <leader>ag :PhpactorGenerateAccessors<CR>
 nmap <leader>at :call phpactor#Transform()<CR>
-let g:ranger_map_keys = 0
-map <leader>F :RangerNewTab<CR>
 let g:Lf_UseMemoryCache = 0
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -222,3 +222,21 @@ let g:vimspector_sign_priority = {
 
 let g:XkbSwitchEnabled = 1
 let g:open_url_browser_default = "firefox-developer-edition"
+nnoremap <silent> <leader>F :RnvimrToggle<CR>
+let g:rnvimr_enable_picker = 1
+let g:rnvimr_draw_border = 1
+let g:rnvimr_enable_bw = 1
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set column_ratios 1,1"'
+augroup ScrollbarInit
+  autocmd!
+  autocmd CursorMoved,VimResized,QuitPre * silent! lua require('scrollbar').show()
+  autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+  autocmd WinLeave,FocusLost,QuitPre             * silent! lua require('scrollbar').clear()
+augroup end
+
+let g:scrollbar_highlight = {
+    \ 'head': 'Folded',
+    \ 'body': 'Folded',
+    \ 'tail': 'Folded',
+    \ }
+"let g:minimap_auto_start = 1
