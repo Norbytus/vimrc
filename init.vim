@@ -25,7 +25,7 @@ set smartindent
 set encoding=UTF-8
 set exrc
 autocmd! BufRead * retab "replace all space on tab
-setlocal spell spelllang=ru
+" setlocal spell spelllang=ru
 set autoread
 au CursorHold * checktime
 
@@ -57,7 +57,7 @@ Plug 'janko/vim-test'
 Plug 'xolox/vim-misc'
 Plug 'diepm/vim-rest-console'
 Plug 'tpope/vim-abolish'
-Plug 'neoclide/coc.nvim'
+" Plug 'neoclide/coc.nvim'
 Plug 'kaicataldo/material.vim', {'branch': 'main'}
 Plug 'swekaj/php-foldexpr.vim'
 Plug 'tyru/open-browser.vim'
@@ -72,8 +72,6 @@ Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'APZelos/blamer.nvim'
 Plug 'puremourning/vimspector'
 Plug 'lyokha/vim-xkbswitch'
@@ -82,7 +80,16 @@ Plug 'Badacadabra/vim-archery'
 Plug 'dhruvasagar/vim-open-url'
 Plug 'Xuyuanp/scrollbar.nvim'
 Plug 'kevinhwang91/rnvimr'
-Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+Plug 'psliwka/vim-smoothie'
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'pwntester/octo.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pineapplegiant/spaceduck'
+Plug 'romgrk/barbar.nvim'
 call plug#end()
 
 let laststatus=2
@@ -111,8 +118,6 @@ let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
-let g:ruby_host_prog = '/home/alex/.gem/ruby/2.5.0/bin/neovim-ruby-host'
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -140,7 +145,7 @@ nmap ce <Plug>(coc-refactor)
 nnoremap <silent> <space>a  :CocAction<cr>
 
 let g:material_theme_style = 'darker'
-colorscheme material
+colorscheme spaceduck
 
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'coc'
@@ -185,22 +190,9 @@ nmap <Leader>aci :PhpactorClassInflect<CR>
 nmap <leader>ag :PhpactorGenerateAccessors<CR>
 nmap <leader>at :call phpactor#Transform()<CR>
 let g:Lf_UseMemoryCache = 0
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 set laststatus=2
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline#extensions#tabline#enabled = 1
-" let g:airline_theme='bubblegum'
-let g:airline_theme = 'archery'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_tab_count = 0
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#coc#enabled = 1
 
 let g:go_doc_popup_window = 1
 
@@ -227,12 +219,12 @@ let g:rnvimr_enable_picker = 1
 let g:rnvimr_draw_border = 1
 let g:rnvimr_enable_bw = 1
 let g:rnvimr_ranger_cmd = 'ranger --cmd="set column_ratios 1,1"'
-augroup ScrollbarInit
-  autocmd!
-  autocmd CursorMoved,VimResized,QuitPre * silent! lua require('scrollbar').show()
-  autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
-  autocmd WinLeave,FocusLost,QuitPre             * silent! lua require('scrollbar').clear()
-augroup end
+" augroup ScrollbarInit
+"   autocmd!
+"   autocmd CursorMoved,VimResized,QuitPre * silent! lua require('scrollbar').show()
+"   autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+"   autocmd WinLeave,FocusLost,QuitPre             * silent! lua require('scrollbar').clear()
+" augroup end
 
 let g:scrollbar_highlight = {
     \ 'head': 'Folded',
@@ -240,3 +232,17 @@ let g:scrollbar_highlight = {
     \ 'tail': 'Folded',
     \ }
 "let g:minimap_auto_start = 1
+nnoremenu WinBar.■\ Stop :call vimspector#Stop()<CR>
+nnoremenu WinBar.▶\ Cont :call vimspector#Continue()<CR>
+nnoremenu WinBar.▷\ Pause :call vimspector#Pause()<CR>
+nnoremenu WinBar.↷\ Next :call vimspector#StepOver()<CR>
+nnoremenu WinBar.→\ Step :call vimspector#StepInto()<CR>
+nnoremenu WinBar.←\ Out :call vimspector#StepOut()<CR>
+nnoremenu WinBar.⟲: :call vimspector#Restart()<CR>
+nnoremenu WinBar.✕ :call vimspector#Reset()<CR>
+
+lua require 'spaceline'
+
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.closable = v:false
+let bufferline.auto_hide = v:true
