@@ -1,14 +1,23 @@
 {
     "intelephense.licenceKey": "KEY",
-    "intelephense.environment.phpVersion": "7.4",
+    "intelephense.environment.phpVersion": "8.0.1",
     "suggest.minTriggerInputLength": 2,
     "coc.preferences.colorSupport": true,
     "highlight.colors.enable": true,
     "highlight.document.enable": true,
     "coc.preferences.formatOnSaveFiletypes": ["php", "json"],
     "intelephense.format.enable": true,
+    "phpactor.enable": true,
+    "phpactor.path": "/home/alex/.vim/plugged/phpactor/bin/phpactor",
     "diagnostic-languageserver.filetypes": {
-        "php": ["phpcs", "phpstan"]
+        "php": ["phpcs", "psalm"]
+    },
+    "languageserver": {
+        "clangd": {
+            "command": "clangd",
+            "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+            "filetypes": ["c", "cpp", "objc", "objcpp"]
+        }
     },
     "diagnostic-languageserver.linters": {
         "phpcs": {
@@ -33,23 +42,6 @@
                 "error": "error",
                 "warning": "warning"
             }
-        },
-        "phpstan": {
-            "command": "./vendor/bin/phpstan",
-            "debounce": 100,
-            "rootPatterns": [ "composer.json", "composer.lock", "vendor", ".git" ],
-            "args": [ "analyze", "--error-format", "raw", "--no-progress", "%file" ],
-            "offsetLine": 0,
-            "offsetColumn": 0,
-            "sourceName": "phpstan",
-            "formatLines": 1,
-            "formatPattern": [
-                "^[^:]+:(\\d+):(.*)(\\r|\\n)*$",
-                {
-                    "line": 1,
-                    "message": 2
-                }
-            ]
         }
     },
     "diagnostic-languageserver.formatFiletypes": {
@@ -63,5 +55,14 @@
             "isStdout": false,
             "doesWriteToFile": true
         }
-    }
+    },
+    "cSpellExt.enableDictionaries": ["russian"],
+    "cSpell.language": "en,ru",
+    "cSpell.userWords": [
+      "Cest",
+      "Cian",
+      "Homeapp",
+      "actix",
+      "zval"
+    ]
 }

@@ -2,8 +2,8 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 set autoread
-set updatetime=250
 set noswapfile
+set updatetime=250
 set number
 set relativenumber
 set nowrap
@@ -43,7 +43,6 @@ Plug 'Raimondi/delimitMate' "Auto close '['
 Plug 'Ioannis-Kapoulas/vim-autoprefixer' "Auto prefixer for css
 Plug 'godlygeek/tabular'
 Plug 'gregsexton/matchtag'
-Plug 'easymotion/vim-easymotion'
 Plug 'dyng/ctrlsf.vim'
 Plug 'mattn/emmet-vim' "For html css.
 Plug 'Yggdroot/indentLine'
@@ -57,7 +56,6 @@ Plug 'janko/vim-test'
 Plug 'xolox/vim-misc'
 Plug 'diepm/vim-rest-console'
 Plug 'tpope/vim-abolish'
-" Plug 'neoclide/coc.nvim'
 Plug 'kaicataldo/material.vim', {'branch': 'main'}
 Plug 'swekaj/php-foldexpr.vim'
 Plug 'tyru/open-browser.vim'
@@ -73,7 +71,7 @@ Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'APZelos/blamer.nvim'
-Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector', {'branch': 'master'}
 Plug 'lyokha/vim-xkbswitch'
 Plug 'jdsimcoe/abstract.vim'
 Plug 'Badacadabra/vim-archery'
@@ -81,7 +79,6 @@ Plug 'dhruvasagar/vim-open-url'
 Plug 'Xuyuanp/scrollbar.nvim'
 Plug 'kevinhwang91/rnvimr'
 Plug 'psliwka/vim-smoothie'
-Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'pwntester/octo.nvim'
 Plug 'nvim-lua/popup.nvim'
@@ -90,6 +87,13 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pineapplegiant/spaceduck'
 Plug 'romgrk/barbar.nvim'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'phaazon/hop.nvim'
+Plug 'skywind3000/vim-quickui'
+Plug 'tpope/vim-dispatch'
+Plug 'rhysd/conflict-marker.vim'
+Plug 'glepnir/spaceline.vim'
+Plug 'simrat39/symbols-outline.nvim'
 call plug#end()
 
 let laststatus=2
@@ -118,37 +122,11 @@ let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-xmap cf <Plug>(coc-format-selected)
-nmap <silent>cr <Plug>(coc-rename)
-nmap ce <Plug>(coc-refactor)
-nnoremap <silent> <space>a  :CocAction<cr>
-
 let g:material_theme_style = 'darker'
-colorscheme spaceduck
+" colorscheme spaceduck
+colorscheme moonfly
 
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'coc'
 let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#enable_icon = 1
 
@@ -190,7 +168,6 @@ nmap <Leader>aci :PhpactorClassInflect<CR>
 nmap <leader>ag :PhpactorGenerateAccessors<CR>
 nmap <leader>at :call phpactor#Transform()<CR>
 let g:Lf_UseMemoryCache = 0
-" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 set laststatus=2
 
@@ -215,16 +192,11 @@ let g:vimspector_sign_priority = {
 let g:XkbSwitchEnabled = 1
 let g:open_url_browser_default = "firefox-developer-edition"
 nnoremap <silent> <leader>F :RnvimrToggle<CR>
+nnoremap <silent> <leader><leader>w :HopWord<CR>
 let g:rnvimr_enable_picker = 1
 let g:rnvimr_draw_border = 1
 let g:rnvimr_enable_bw = 1
 let g:rnvimr_ranger_cmd = 'ranger --cmd="set column_ratios 1,1"'
-" augroup ScrollbarInit
-"   autocmd!
-"   autocmd CursorMoved,VimResized,QuitPre * silent! lua require('scrollbar').show()
-"   autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
-"   autocmd WinLeave,FocusLost,QuitPre             * silent! lua require('scrollbar').clear()
-" augroup end
 
 let g:scrollbar_highlight = {
     \ 'head': 'Folded',
@@ -240,9 +212,61 @@ nnoremenu WinBar.→\ Step :call vimspector#StepInto()<CR>
 nnoremenu WinBar.←\ Out :call vimspector#StepOut()<CR>
 nnoremenu WinBar.⟲: :call vimspector#Restart()<CR>
 nnoremenu WinBar.✕ :call vimspector#Reset()<CR>
-
-lua require 'spaceline'
+let g:spaceline_seperate_style = 'none'
 
 let bufferline = get(g:, 'bufferline', {})
 let bufferline.closable = v:false
 let bufferline.auto_hide = v:true
+
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+xmap cf <Plug>(coc-format-selected)
+nmap <silent>cr <Plug>(coc-rename)
+nmap ce <Plug>(coc-refactor)
+nnoremap <silent> <space>a  :CocAction<cr>
+
+nnoremap <silent>    <A-,> :BufferPrevious<CR>
+nnoremap <silent>    <A-.> :BufferNext<CR>
+nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
+nnoremap <silent>    <A->> :BufferMoveNext<CR>
+nnoremap <silent>    <A-1> :BufferGoto 1<CR>
+nnoremap <silent>    <A-2> :BufferGoto 2<CR>
+nnoremap <silent>    <A-3> :BufferGoto 3<CR>
+nnoremap <silent>    <A-4> :BufferGoto 4<CR>
+nnoremap <silent>    <A-5> :BufferGoto 5<CR>
+nnoremap <silent>    <A-6> :BufferGoto 6<CR>
+nnoremap <silent>    <A-7> :BufferGoto 7<CR>
+nnoremap <silent>    <A-8> :BufferGoto 8<CR>
+nnoremap <silent>    <A-9> :BufferLast<CR>
+nnoremap <silent>    <A-p> :BufferPin<CR>
+nnoremap <silent>    <A-c> :BufferClose<CR>
+nnoremap <silent> <C-s>    :BufferPick<CR>
+nnoremap <silent> <space>bb :BufferOrderByBufferNumber<CR>
+nnoremap <silent> <Space>bd :BufferOrderByDirectory<CR>
+nnoremap <silent> <Space>bl :BufferOrderByLanguage<CR>
+nnoremap <silent> <Space>bw :BufferOrderByWindowNumber<CR>
