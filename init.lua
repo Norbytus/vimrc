@@ -1,0 +1,6 @@
+require('plugins')
+require('settings')
+require('lsp')
+require('sig')
+require('treesitter')
+require ('lualine_setup')

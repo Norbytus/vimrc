@@ -71,7 +71,7 @@ Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'APZelos/blamer.nvim'
-Plug 'puremourning/vimspector', {'branch': 'master'}
+Plug 'puremourning/vimspector'
 Plug 'lyokha/vim-xkbswitch'
 Plug 'jdsimcoe/abstract.vim'
 Plug 'Badacadabra/vim-archery'
@@ -94,6 +94,17 @@ Plug 'tpope/vim-dispatch'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'glepnir/spaceline.vim'
 Plug 'simrat39/symbols-outline.nvim'
+Plug 'jbyuki/quickmath.nvim'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'thibthib18/mongo-nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'VonHeikemen/searchbox.nvim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'mfussenegger/nvim-jdtls'
+Plug 'folke/twilight.nvim'
+Plug 'udalov/kotlin-vim'
+Plug 'NTBBloodbath/rest.nvim'
+Plug 'nvim-lua/plenary.nvim'
 call plug#end()
 
 let laststatus=2
@@ -107,30 +118,22 @@ let g:indentLine_color_dark = 1
 let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
 
 "Using arrow key in insert mode 'alt+arrow_key' inoremap <A-h> <left>
+" Move to lua
 inoremap <A-j> <down>
 inoremap <A-k> <up>
 inoremap <A-l> <right>
 
+" Move to lua
 nmap <leader>gn <Plug>(GitGutterNextHunk)
 nmap <leader>gp <Plug>(GitGutterPrevHunk)
 
 nnoremap <leader>vr :source ~/.config/nvim/init.vim<CR>
 
-" c-j c-k for moving in snippet
-let g:UltiSnipsExpandTrigger      = "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
-
 let g:material_theme_style = 'darker'
 " colorscheme spaceduck
 colorscheme moonfly
 
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#enable_icon = 1
-
-
+" Move to lua
 let b:phpfold_use = 1
 let b:phpfold_group_iftry = 0
 let b:phpfold_group_args = 1
@@ -142,31 +145,37 @@ let b:phpfold_text = 1
 let b:phpfold_text_right_lines = 1
 let b:phpfold_text_percent = 0
 
+"move to lua
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let test#neovim#term_position = "topleft"
+
+"move to lua
 nmap <leader>tn :TestNearest<CR>
 nmap <leader>tf :TestFile<CR>
 nmap <leader>ts :TestSuite<CR>
 nmap <leader>tl :TestLast<CR>
 nmap <leader>tv :TestVisit<CR>
 
+"move to lua
 nmap <leader>e :FloatermNew<CR>
 nmap <leader>et :FloatermToggle<CR>
 nmap <leader>ep :FloatermPrev<CR>
 nmap <leader>en :FloatermNext<CR>
 
+"move to lua
 let g:floaterm_position = 'center'
 let g:move_key_modifier = 'C'
 
+"move to lua
 nmap <leader>cf <Plug>CtrlSFCwordPath<CR>
 
+"move to lua
 nmap <Leader>ai :PhpactorImportClass<CR>
 nmap <Leader>an :PhpactorClassNew<CR>
 nmap <Leader>am :PhpactorMoveFile<CR>
 nmap <Leader>aci :PhpactorClassInflect<CR>
 nmap <leader>ag :PhpactorGenerateAccessors<CR>
-nmap <leader>at :call phpactor#Transform()<CR>
 let g:Lf_UseMemoryCache = 0
 
 set laststatus=2
@@ -177,11 +186,14 @@ au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " let g:blamer_enabled = 1
 " let g:hardtime_default_on = 1
+"move to lua
 let g:vimspector_enable_mappings = 'HUMAN'
 
+"move to lua
 let g:doge_php_settings = {
 \  'resolve_fqn': 0
 \}
+"move to lua
 let g:vimspector_sign_priority = {
   \    'vimspectorBP':         999,
   \    'vimspectorBPCond':     999,
@@ -189,10 +201,14 @@ let g:vimspector_sign_priority = {
   \    'vimspectorPC':         999,
   \ }
 
+"move to lua
 let g:XkbSwitchEnabled = 1
 let g:open_url_browser_default = "firefox-developer-edition"
+"
+"move to lua
 nnoremap <silent> <leader>F :RnvimrToggle<CR>
 nnoremap <silent> <leader><leader>w :HopWord<CR>
+"move to lua
 let g:rnvimr_enable_picker = 1
 let g:rnvimr_draw_border = 1
 let g:rnvimr_enable_bw = 1
@@ -217,12 +233,6 @@ let g:spaceline_seperate_style = 'none'
 let bufferline = get(g:, 'bufferline', {})
 let bufferline.closable = v:false
 let bufferline.auto_hide = v:true
-
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -270,3 +280,4 @@ nnoremap <silent> <space>bb :BufferOrderByBufferNumber<CR>
 nnoremap <silent> <Space>bd :BufferOrderByDirectory<CR>
 nnoremap <silent> <Space>bl :BufferOrderByLanguage<CR>
 nnoremap <silent> <Space>bw :BufferOrderByWindowNumber<CR>
+xnoremap <leader>s :SearchBoxIncSearch visual_mode=true<CR>
