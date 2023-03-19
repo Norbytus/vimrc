@@ -1,5 +1,4 @@
 local status_ok, sig = pcall(require, "lsp_signature")
-    print(vim.inspect(status_ok))
 if not status_ok then
     return
 end

@@ -13,7 +13,7 @@ vim.cmd([[
     set termguicolors
     set background=dark
     set listchars=tab:⇢\ ,eol:¬,trail:·
-    set fillchars+=vert:\ 
+    set fillchars+=vert:\·
     set list
     set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
     set colorcolumn=80,120
@@ -26,13 +26,34 @@ vim.cmd([[
     set encoding=UTF-8
     set exrc
     set autoread
-    colorscheme moonfly
-    autocmd! BufRead * retab "replace all space on tab
+    set spelllang=en,ru
+    set spell!
+    colorscheme oxocarbon
     set autoread
     au CursorHold * checktime
     au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+    let test#php#phpunit#executable = 'docker exec -it ifunny-api-api-1 ./vendor/bin/phpunit'
+    let test#php#behat#executable = 'docker exec -it ifunny-api-api-1 ./vendor/bin/behat'
+
+    let g:test#php#codeception#executable = 'docker exec -it ifunny-api-api-1 /home/ifunny/api/vendor/bin/codecept'
+    let g:test#php#codeception#options = '--env=v4 WithFixtures -c /home/ifunny/api/tests/functional/Api/codeception.yml'
+    let g:test#echo_command = 1
+
+    let test#strategy = {
+    \ 'nearest': 'floaterm',
+    \ 'file':    'floaterm',
+    \ 'suite':   'floaterm',
+    \}
+
+    if !exists('g:test#php#codeception#file_pattern')
+    let g:test#php#codeception#file_pattern =
+    \ '\v((c|C)e(p|s)t\.php$)'
+    endif
 ]])
+    -- let test#php#codeception#executable = 'docker exec -it ifunny-api-api-1 /home/ifunny/api/vendor/bin/codecept --env=4 WithFixtures -c /home/ifunny/api/tests/functional/Api/codeception.yml'
+    -- let g:test#php#codeception#options = '--env=v5 WithFixtures -c /home/ifunny/api/tests/functional/Api/codeception.yml'
+    --autocmd! BufRead * retab "replace all space on tab
 
 -- Space as leaderkey
 vim.g.mapleader = " "
@@ -62,19 +83,19 @@ vim.api.nvim_set_keymap(
 )
 
 vim.api.nvim_set_keymap(
-'n', '<leader>tn', '<cmd>TestNearest<cr>', { noremap = true }
+'n', 'tn', '<cmd>TestNearest<cr>', { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
-'n', '<leader>tf', '<cmd>TestFile<cr>', { noremap = true }
+'n', 'tf', '<cmd>TestFile<cr>', { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
-'n', '<leader>ts', '<cmd>TestSuite<cr>', { noremap = true }
+'n', 'ts', '<cmd>TestSuite<cr>', { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
-'n', '<leader>tl', '<cmd>TestLast<cr>', { noremap = true }
+'n', 'tl', '<cmd>TestLast<cr>', { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
-'n', '<leader>tv', '<cmd>TestVisit<cr>', { noremap = true }
+'n', 'tv', '<cmd>TestVisit<cr>', { noremap = true, silent = true }
 )
 
 vim.api.nvim_set_keymap(
@@ -98,10 +119,6 @@ vim.g.Lf_WindowPosition = 'popup'
 vim.g.Lf_PreviewInPopup = 1
 vim.g.Lf_UseMemoryCache = 0
 vim.g.vimspector_enable_mappings = 'HUMAN'
-
-vim.g.doge_php_settings = {
-  resolve_fqn = 0,
-}
 
 vim.g.vimspector_sign_priority = {
     vimspectorBP = 999,
@@ -171,3 +188,82 @@ require("indent_blankline").setup {
 -- vim.g.indentLine_color_gui = "#D32F30"
 -- vim.g.indentLine_color_tty_light = 7
 -- vim.g.indentLine_color_dark = 1
+vim.api.nvim_set_keymap('n', '<A-j>', ":MoveLine(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-k>', ":MoveLine(-1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-j>', ":MoveBlock(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-k>', ":MoveBlock(-1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-l>', ":MoveHChar(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-h>', ":MoveHChar(-1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-l>', ":MoveHBlock(1)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<A-h>', ":MoveHBlock(-1)<CR>", { noremap = true, silent = true })
+
+
+vim.api.nvim_set_keymap(
+'n', '<leader>s', ':SearchBoxReplace<cr>', { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap('n', '<A-c>', ':BufferClose<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>c', '<Plug>RestNvim', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>v', ':Telescope grep_string<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', 'co', ':ConflictMarkerOurselves<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'ct', ':ConflictMarkerThemselves<CR>', { noremap = true, silent = true })
+--
+-- Set barbar's options
+vim.g.bufferline = {
+  -- Enable/disable animations
+  animation = false,
+
+  add_in_buffer_number_order = true,
+
+  -- Enable/disable auto-hiding the tab bar when there is a single buffer
+  auto_hide = false,
+
+  -- Enable/disable current/total tabpages indicator (top right corner)
+  tabpages = true,
+
+  -- Enable/disable close button
+  closable = false,
+
+  -- Enables/disable clickable tabs
+  --  - left-click: go to buffer
+  --  - middle-click: delete buffer
+  clickable = flase,
+
+  -- Enable/disable icons
+  -- if set to 'numbers', will show buffer index in the tabline
+  -- if set to 'both', will show buffer index and icons in the tabline
+  icons = true,
+
+  -- If set, the icon color will follow its corresponding buffer
+  -- highlight group. By default, the Buffer*Icon group is linked to the
+  -- Buffer* group (see Highlighting below). Otherwise, it will take its
+  -- default value as defined by devicons.
+  icon_custom_colors = false,
+
+  -- If true, new buffers will be inserted at the start/end of the list.
+  -- Default is to insert after current buffer.
+  insert_at_end = false,
+  insert_at_start = false,
+
+  -- Sets the maximum padding width with which to surround each tab
+  maximum_padding = 1,
+
+  -- Sets the maximum buffer name length.
+  maximum_length = 30,
+
+  -- If set, the letters for each buffer in buffer-pick mode will be
+  -- assigned based on their name. Otherwise or in case all letters are
+  -- already assigned, the behavior is to assign letters in order of
+  -- usability (see order below)
+  semantic_letters = true,
+
+  -- New buffer letters are assigned in this order. This order is
+  -- optimal for the qwerty keyboard layout but might need adjustement
+  -- for other layouts.
+  letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
+
+  -- Sets the name of unnamed buffers. By default format is "[Buffer X]"
+  -- where X is the buffer number. But only a static string is accepted here.
+  no_name_title = nil,
+}

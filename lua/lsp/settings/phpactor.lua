@@ -3,7 +3,7 @@ local util = require 'lspconfig.util'
 return {
   default_config = {
     cmd = { 'phpactor', 'language-server' },
-    filetypes = { 'php' },
+    filetypes = { '' },
     root_dir = function(pattern)
       local cwd = vim.loop.cwd()
       local root = util.root_pattern('composer.json', '.git')(pattern)

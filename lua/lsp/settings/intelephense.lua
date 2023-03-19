@@ -28,7 +28,6 @@ npm install -g intelephense
 ```
 ]],
     default_config = {
-      package_json = 'https://raw.githubusercontent.com/bmewburn/vscode-intelephense/master/package.json',
       root_dir = [[root_pattern("composer.json", ".git")]],
       init_options = [[{
         storagePath = Optional absolute path to storage dir. Defaults to os.tmpdir().
@@ -40,8 +39,11 @@ npm install -g intelephense
       settings = [[{
         intelephense = {
           files = {
-            maxSize = 1000000;
+            maxSize = 1000;
           };
+          environment = {
+            phpVersion = 8.0
+          }
         };
         -- See https://github.com/bmewburn/intelephense-docs
       }]],
