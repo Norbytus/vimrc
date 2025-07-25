@@ -12,5 +12,9 @@ return {
 		-- …etc.
 	},
 	version = '^1.', -- optional: only update when a new 1.x version is released
-
+    keys = {
+        { "gt", "<CMD>BufferNext<CR>", "n" },
+        { "gT", "<CMD>BufferNext<CR>", "n" },
+        { "cc", "<CMD>BufferClose<CR>", "n" },
+    },
 }
