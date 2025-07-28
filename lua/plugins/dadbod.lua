@@ -24,5 +24,20 @@ return {
         vim.g.db_ui_auto_execute_table_helpers = 1
         vim.g.db_ui_execute_on_save = 0
         -- Your DBUI configuration
+        local cmp = require("cmp")
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "sql", "mysql", "plsql" },
+            callback = function()
+                cmp.setup.buffer({
+                    sources = {
+                        { name = "vim-dadbod-completion" },
+                        { name = "buffer" },
+                        { name = "luasnip" },
+                    },
+                })
+            end,
+            group = autocomplete_group,
+        })
+
     end,
 }
