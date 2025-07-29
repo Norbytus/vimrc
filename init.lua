@@ -57,3 +57,25 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.splitright = true
+
+function get_php_container()
+  -- Get project name for regex
+  local project = vim.fn.systemlist("basename $(git rev-parse --show-toplevel)")[1]
+  if not project or project == "" then
+    return ""
+  end
+
+  -- Build full command safely
+  local cmd = string.format(
+    "docker compose ps -q | xargs -r docker inspect --format '{{.Name}}' 2>/dev/null | sed -E 's#^/##' | grep -E '%s-php' | head -n 1",
+    project
+  )
+
+  -- Run command and capture output
+  local container = vim.fn.systemlist(cmd)[1] or ""
+  return vim.trim(container)
+end
+
+function host_to_container(path)
+    return path:gsub("/home/user/project", "/var/www/project")
+end
