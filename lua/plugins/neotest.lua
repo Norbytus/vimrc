@@ -19,7 +19,9 @@ return {
                 require("neotest-phpunit")({
                     phpunit_cmd = vim.fn.stdpath("config") .. "/phpunit-docker.sh", -- Use wrapper
                 }),
-                require("neotest-rust")
+                require("neotest-rust") {
+                    args = { "--no-capture" },
+                }
             },
             output = { open_on_run = true },
         })

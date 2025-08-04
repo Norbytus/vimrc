@@ -22,6 +22,7 @@ return {
 		{'gr', vim.lsp.buf.references, 'n'},
 		{'gi', vim.lsp.buf.implementation, 'n'},
 		{'<leader>f', vim.lsp.buf.format, 'n'},
-		{'<leader>r', vim.lsp.buf.rename, 'n'},
+		{'<leader>lr', vim.lsp.buf.rename, 'n'},
+        {'<leader>la', vim.lsp.buf.code_action, 'n'},
 	}
 }

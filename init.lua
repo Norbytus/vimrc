@@ -1,3 +1,16 @@
+vim.lsp.config(
+    "lua_ls",
+    {
+        settings = {
+            Lua = {
+                workspace = {
+                    library = vim.api.nvim_get_runtime_file("", true)
+                }
+            }
+        }
+    }
+)
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -9,6 +22,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ { import = "plugins" } })
+
+-- vim.keymap.set('i', '<leader>e', '<esc>')
+-- vim.keymap.set({'n', 'i', 'v', 'c'}, '<Esc>', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>w', '<cmd>:w<cr>')
 
 -- In your Lua config (e.g., in plugins/lsp.lua or init.lua)
 local on_attach = function(client, bufnr)
@@ -57,6 +74,8 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.splitright = true
+vim.opt.winborder = "rounded"
+vim.cmd [[colorscheme moonfly]]
 
 function get_php_container()
     -- Get project name for regex

@@ -10,6 +10,7 @@ return {
         keys = {
             { "<leader>r", "", desc = "+Rest" },
             { "<leader>re", "<cmd>lua require('kulala').set_selected_env()<cr>", desc = "Chose env" },
+            { "<leader>rv", "<cmd>lua require('kulala').get_selected_env()<cr>", desc = "Get env" },
             { "<leader>rs", "<cmd>lua require('kulala').run()<cr>", desc = "Send the request" },
             { "<leader>rt", "<cmd>lua require('kulala').toggle_view()<cr>", desc = "Toggle headers/body" },
             { "<leader>rp", "<cmd>lua require('kulala').jump_prev()<cr>", desc = "Jump to previous request" },
@@ -24,6 +25,6 @@ return {
             -- winbar = true,
             -- default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
             -- default_winbar_panes = { "script_output" },
-        }
+        },
     }
 }

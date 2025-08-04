@@ -4,6 +4,7 @@ return {
         "mfussenegger/nvim-dap",
         "nvim-neotest/nvim-nio",
         "theHamsta/nvim-dap-virtual-text",
+        "jay-babu/mason-nvim-dap.nvim",
     },
     keys = {
         { "<leader>db", function() require("dap").toggle_breakpoint() end },
@@ -26,18 +27,10 @@ return {
     config = function()
         local dap = require("dap")
         local dapui = require("dapui")
-
-        dapui.setup(opts)
-        dap.listeners.after.event_initialized["dapui_config"] = function()
-            dapui.open({})
-        end
-        dap.listeners.before.event_terminated["dapui_config"] = function()
-            dapui.close({})
-        end
-        dap.listeners.before.event_exited["dapui_config"] = function()
-            dapui.close({})
-        end
-
+        require("mason-nvim-dap").setup({
+            ensure_installed = { "php" },
+            automatic_installation = true,
+        })
 
         local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
         dap.adapters.php = {
@@ -54,24 +47,37 @@ return {
                 port = 9003,
                 stopOnEntry = false,
                 pathMappings = {
-                    ['/var/www'] = "${workspaceFolder}",
+                    ['/var/www/app'] = "${workspaceFolder}",
                 }
             },
         }
-        -- load mason-nvim-dap here, after all adapters have been setup
-        if LazyVim.has("mason-nvim-dap.nvim") then
-            require("mason-nvim-dap").setup(LazyVim.opts("mason-nvim-dap.nvim"))
+
+        dapui.setup(opts)
+        dap.listeners.after.event_initialized["dapui_config"] = function()
+            dapui.open({})
         end
+        dap.listeners.before.event_terminated["dapui_config"] = function()
+            dapui.close({})
+        end
+        dap.listeners.before.event_exited["dapui_config"] = function()
+            dapui.close({})
+        end
+
+
+        -- load mason-nvim-dap here, after all adapters have been setup
+        -- if LazyVim.has("mason-nvim-dap.nvim") then
+        --     require("mason-nvim-dap").setup(LazyVim.opts("mason-nvim-dap.nvim"))
+        -- end
 
         vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
-        for name, sign in pairs(LazyVim.config.icons.dap) do
-            sign = type(sign) == "table" and sign or { sign }
-            vim.fn.sign_define(
-                "Dap" .. name,
-                { text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
-            )
-        end
+        -- for name, sign in pairs(LazyVim.config.icons.dap) do
+        --     sign = type(sign) == "table" and sign or { sign }
+        --     vim.fn.sign_define(
+        --         "Dap" .. name,
+        --         { text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
+        --     )
+        -- end
 
         -- setup dap config by VsCode launch.json file
         local vscode = require("dap.ext.vscode")
