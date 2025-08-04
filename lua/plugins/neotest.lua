@@ -6,9 +6,10 @@ return {
         "antoinemadec/FixCursorHold.nvim",
         "nvim-treesitter/nvim-treesitter",
         "olimorris/neotest-phpunit",
+        "rouge8/neotest-rust"
     },
     keys = {
-        { "<leader>tn", function() require("neotest").run.run() end, "n" },
+        { "<leader>tn", function() require("neotest").run.run(vim.fn.expand("%")) end, "n" },
         { "<leader>to", function() require("neotest").output.open({ enter = true }) end, },
         { "<leader>tt", function() require("neotest").summary.toggle() end, desc = "Toggle test summary" },
     },
@@ -16,13 +17,9 @@ return {
         require("neotest").setup({
             adapters = {
                 require("neotest-phpunit")({
-                    phpunit_cmd = function()
-                        return {
-                            "docker", "exec", "-i", get_php_container(),
-                            "vendor/bin/phpunit",
-                        }
-                    end,
+                    phpunit_cmd = vim.fn.stdpath("config") .. "/phpunit-docker.sh", -- Use wrapper
                 }),
+                require("neotest-rust")
             },
             output = { open_on_run = true },
         })
