@@ -59,23 +59,42 @@ vim.opt.expandtab = true
 vim.opt.splitright = true
 
 function get_php_container()
-  -- Get project name for regex
-  local project = vim.fn.systemlist("basename $(git rev-parse --show-toplevel)")[1]
-  if not project or project == "" then
-    return ""
-  end
+    -- Get project name for regex
+    local project = vim.fn.systemlist("basename $(git rev-parse --show-toplevel)")[1]
+    if not project or project == "" then
+        return ""
+    end
 
-  -- Build full command safely
-  local cmd = string.format(
-    "docker compose ps -q | xargs -r docker inspect --format '{{.Name}}' 2>/dev/null | sed -E 's#^/##' | grep -E '%s-php' | head -n 1",
-    project
-  )
-
-  -- Run command and capture output
-  local container = vim.fn.systemlist(cmd)[1] or ""
-  return vim.trim(container)
+    local cmd = string.format(
+        "docker ps -q | " ..
+        "xargs -r docker inspect --format '{{.Name}}' 2>/dev/null | " ..
+        "sed -E 's#^/##' | grep -E '%s-php' | head -n 1",
+        project
+    )
+    return vim.trim(vim.fn.systemlist(cmd)[1] or "")
 end
 
 function host_to_container(path)
-    return path:gsub("/home/user/project", "/var/www/project")
+    local project = vim.fn.systemlist("basename $(git rev-parse --show-toplevel)")[1]
+    if not project or project == "" then
+        return ""
+    end
+
+    return path:gsub(
+        string.format(
+            "/home/alex/git/%s/app", project
+        ),
+        "/var/www/app"
+    )
 end
+
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = "●", -- Could be "■", "▎", "x"
+    spacing = 2,
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
