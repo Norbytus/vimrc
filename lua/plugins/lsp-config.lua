@@ -19,8 +19,8 @@ return {
 	end,
 	keys = {
 		{'gd', vim.lsp.buf.definition, 'n'},
-		{'gr', vim.lsp.buf.references, 'n'},
-		{'gi', vim.lsp.buf.implementation, 'n'},
+		{'gr', '<cmd>Telescope lsp_references<CR>', 'n'},
+		{'gi', '<cmd>Telescope lsp_implementations<CR>', 'n'},
 		{'<leader>f', vim.lsp.buf.format, 'n'},
 		{'<leader>lr', vim.lsp.buf.rename, 'n'},
         {'<leader>la', vim.lsp.buf.code_action, 'n'},

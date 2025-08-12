@@ -60,6 +60,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   group = autocomplete_group,
 })
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
+
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -75,6 +77,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.splitright = true
 vim.opt.winborder = "rounded"
+vim.opt.mouse = ""
 vim.cmd [[colorscheme moonfly]]
 
 function get_php_container()
