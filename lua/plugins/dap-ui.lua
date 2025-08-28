@@ -8,6 +8,7 @@ return {
     },
     keys = {
         { "<leader>db", function() require("dap").toggle_breakpoint() end },
+        { "<leader>dB", function() require("dap").toggle_breakpoint(vim.fn.input('Breakpoint condition: ')) end },
         { "<leader>dc", function() require("dap").continue() end },
         { "<leader>du", function() require("dapui").toggle() end, desc = "DAP UI Toggle" },
         { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },

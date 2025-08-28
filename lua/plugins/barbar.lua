@@ -6,20 +6,20 @@ return {
   },
   init = function() vim.g.barbar_auto_setup = false end,
   opts = {
-    animation = true,
+    animation = false,
     auto_hide = false,
-    clickable = true,
+    clickable = false,
     insert_at_end = false,
     icons = {
       buffer_index = false,
       buffer_number = false,
       button = '',
-      diagnostics = {
-        [vim.diagnostic.severity.ERROR] = {enabled = true, icon = ''},
-        [vim.diagnostic.severity.WARN] = {enabled = true, icon = ''},
-        [vim.diagnostic.severity.INFO] = {enabled = true, icon = ''},
-        [vim.diagnostic.severity.HINT] = {enabled = true, icon = ''},
-      },
+      -- diagnostics = {
+      --   [vim.diagnostic.severity.ERROR] = {enabled = true, icon = ''},
+      --   [vim.diagnostic.severity.WARN] = {enabled = true, icon = ''},
+      --   [vim.diagnostic.severity.INFO] = {enabled = true, icon = ''},
+      --   [vim.diagnostic.severity.HINT] = {enabled = true, icon = ''},
+      -- },
       filetype = { enabled = true },
       separator = { left = '▎', right = '' },
       modified = { button = '●' },
@@ -41,6 +41,7 @@ return {
     -- vim.keymap.set('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', { desc = 'Go to buffer 3' })
     -- vim.keymap.set('n', '<A-p>', '<Cmd>BufferPin<CR>', { desc = 'Pin buffer' })
     vim.keymap.set('n', '<leader>cc', '<Cmd>BufferClose<CR>', { desc = 'Close buffer' })
+    vim.keymap.set('n', '<leader>ca', '<Cmd>BufferCloseAllButCurrent<CR>', { desc = 'Close buffer all execpt current' })
     -- vim.keymap.set('n', '<C-p>', '<Cmd>BufferPick<CR>', { desc = 'Pick buffer' })
   end,
 }

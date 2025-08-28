@@ -60,9 +60,11 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   group = autocomplete_group,
 })
-vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
+-- vim.keymap.set("i", "q", "<Esc>", { noremap = true, silent = true })
+-- vim.keymap.set("v", "q", "<Esc>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "Q", "q", { noremap = true })
 
-
+vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.colorcolumn='80'

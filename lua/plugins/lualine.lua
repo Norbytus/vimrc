@@ -37,7 +37,24 @@ return {
         sections = {
             lualine_a = {'mode'},
             lualine_b = {'branch', 'diff', 'diagnostics'},
-            lualine_c = {'filename'},
+            lualine_c = {
+                'filename',
+                {
+                    'diagnostics',
+                    sources = { 'nvim_diagnostic' }, -- use Neovim’s built-in LSP client
+                    sections = { 'error', 'warn', 'info', 'hint' },
+                    diagnostics_color = {
+                        error = 'DiagnosticError', -- you can link to highlight groups
+                        warn  = 'DiagnosticWarn',
+                        info  = 'DiagnosticInfo',
+                        hint  = 'DiagnosticHint',
+                    },
+                    symbols = { error = ' ', warn = ' ', info = ' ', hint = '󰌵 ' },
+                    colored = true,
+                    update_in_insert = false,
+                    always_visible = false,
+                },
+            },
             lualine_x = {'encoding', 'fileformat', 'filetype'},
             lualine_y = {'progress'},
             lualine_z = {'location'}

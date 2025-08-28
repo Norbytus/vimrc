@@ -9,7 +9,7 @@ return {
         "rouge8/neotest-rust"
     },
     keys = {
-        { "<leader>tn", function() require("neotest").run.run(vim.fn.expand("%")) end, "n" },
+        { "<leader>tn", function() require("neotest").run.run() end, "n" },
         { "<leader>to", function() require("neotest").output.open({ enter = true }) end, },
         { "<leader>tt", function() require("neotest").summary.toggle() end, desc = "Toggle test summary" },
     },
