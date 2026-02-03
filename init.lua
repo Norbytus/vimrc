@@ -80,7 +80,7 @@ vim.opt.expandtab = true
 vim.opt.splitright = true
 vim.opt.winborder = "rounded"
 vim.opt.mouse = ""
-vim.cmd [[colorscheme moonfly]]
+vim.cmd [[colorscheme yorumi]]
 
 function get_php_container()
     -- Get project name for regex

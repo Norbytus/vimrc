@@ -12,19 +12,35 @@ return {
             { "<leader>re", "<cmd>lua require('kulala').set_selected_env()<cr>", desc = "Chose env" },
             { "<leader>rv", "<cmd>lua require('kulala').get_selected_env()<cr>", desc = "Get env" },
             { "<leader>rs", "<cmd>lua require('kulala').run()<cr>", desc = "Send the request" },
+            { "<leader>ra", "<cmd>lua require('kulala').run_all()<cr>", desc = "Send the request all" },
             { "<leader>rt", "<cmd>lua require('kulala').toggle_view()<cr>", desc = "Toggle headers/body" },
-            { "<leader>rp", "<cmd>lua require('kulala').jump_prev()<cr>", desc = "Jump to previous request" },
-            { "<leader>rn", "<cmd>lua require('kulala').jump_next()<cr>", desc = "Jump to next request" },
+            -- { "<leader>rp", "<cmd>lua require('kulala').jump_prev()<cr>", desc = "Jump to previous request" },
+            -- { "<leader>rn", "<cmd>lua require('kulala').jump_next()<cr>", desc = "Jump to next request" },
             { "<leader>ri", "<cmd>lua require('kulala').inspect()<cr>", desc = "Jump to next request" },
             { "<leader>rc", "<cmd>lua require('kulala').copy()<cr>", desc = "Jump to next request" },
+            { "<leader>rp", "<cmd>lua require('kulala').from_curl()<cr>", desc = "Jump to next request" },
         },
         opts = {
             global_keymaps = false,
             request_timeout = 5000,
             -- default_view = "headers_body",
-            -- winbar = true,
-            -- default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
-            -- default_winbar_panes = { "script_output" },
+            winbar = true,
+            default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
+            default_winbar_panes = { "script_output" },
+            --   report = {
+            -- possible values: true | false | "on_error"
+            show_script_output = true,
+            -- possible values: true | false | "on_error" | "failed_only"
+            show_asserts_output = true,
+            -- possible values: true | false | "on_error"
+            show_summary = true,
+
+            headersHighlight = "Special",
+            successHighlight = "String",
+            errorHighlight = "Error",
+            ui = {
+                max_response_size = 100000
+            },
         },
-    }
+    },
 }
