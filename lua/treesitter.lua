@@ -1,0 +1,97 @@
+return {
+  'nvim-treesitter/nvim-treesitter',
+  branch = 'main', -- NOT master
+  build = ':TSUpdate',
+  -- config = function()
+  --   require('nvim-treesitter.configs').setup({
+  --     ensure_installed = {
+  --       'lua', 'python', 'javascript', 'html', 'css', 'typescript', 'json',
+  --       'bash', 'markdown', 'yaml', 'c', 'cpp', 'go', 'rust', 'php'
+  --     },
+  --     highlight = {
+  --       enable = true,
+  --     },
+  --     indent = {
+  --       enable = true,
+  --     },
+  --     incremental_selection = {
+  --       enable = true,
+  --       keymaps = {
+  --         init_selection = '<CR>',
+  --         node_incremental = '<CR>',
+  --         node_decremental = '<BS>',
+  --       },
+  --     },
+  --   })
+  -- end,
+}
+-- return {
+--   {
+--     "nvim-treesitter/nvim-treesitter",
+--     branch = "main", -- 🔴 IMPORTANT: do NOT use master
+--     build = ":TSUpdate",
+--
+--     config = function()
+--       require("nvim-treesitter.configs").setup({
+--         ensure_installed = {
+--           "lua",
+--           "vim",
+--           "vimdoc",
+--           "bash",
+--           "python",
+--           "javascript",
+--           "typescript",
+--           "json",
+--           "html",
+--           "css",
+--         },
+--
+--         auto_install = false,
+--
+--         highlight = {
+--           enable = true,
+--           additional_vim_regex_highlighting = false,
+--         },
+--
+--         indent = {
+--           enable = true,
+--         },
+--
+--         incremental_selection = {
+--           enable = true,
+--           keymaps = {
+--             init_selection = "<CR>",
+--             node_incremental = "<CR>",
+--             scope_incremental = "<S-CR>",
+--             node_decremental = "<BS>",
+--           },
+--         },
+--       })
+--     end,
+--   },
+--
+--   -- OPTIONAL but stable with 0.12 when treesitter is pinned
+--   {
+--     "nvim-treesitter/nvim-treesitter-textobjects",
+--     version = "v0.9.2",
+--     dependencies = { "nvim-treesitter/nvim-treesitter" },
+--
+--     config = function()
+--       require("nvim-treesitter.configs").setup({
+--         textobjects = {
+--           select = {
+--             enable = true,
+--             lookahead = true,
+--
+--             keymaps = {
+--               ["af"] = "@function.outer",
+--               ["if"] = "@function.inner",
+--               ["ac"] = "@class.outer",
+--               ["ic"] = "@class.inner",
+--             },
+--           },
+--         },
+--       })
+--     end,
+--   },
+-- }

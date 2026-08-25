@@ -33,11 +33,15 @@ return {
             automatic_installation = true,
         })
 
-        local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+        local mason = vim.fn.stdpath("data") .. "/mason/packages"
+
+        local php_debug = mason .. "/php-debug-adapter/extension/out/phpDebug.js"
+        local codelldb = mason .. "/codelldb/extension/adapter/codelldb"
+
         dap.adapters.php = {
             type = "executable",
             command = "node",
-            args = { mason_path .. "packages/php-debug-adapter/extension/out/phpDebug.js" },
+            args = { php_debug },
         }
 
         dap.configurations.php = {
@@ -50,6 +54,44 @@ return {
                 pathMappings = {
                     ['/var/www/app'] = "${workspaceFolder}",
                 }
+            },
+        }
+        dap.adapters.codelldb = {
+            type = "server",
+            port = "${port}",
+            executable = {
+                command = codelldb,
+                args = { "--port", "${port}" },
+            },
+        }
+
+        dap.configurations.rust = {
+            {
+                name = "Launch executable",
+                type = "codelldb",
+                request = "launch",
+
+                program = function()
+                    return vim.fn.input(
+                        "Executable: ",
+                        vim.fn.getcwd() .. "/target/debug/",
+                        "file"
+                    )
+                end,
+
+                cwd = function()
+                    return vim.fn.input(
+                        "CWD: ",
+                        vim.fn.getcwd() .. "/target/debug/",
+                        "file"
+                    )
+                end,
+                stopOnEntry = false,
+                args = function()
+                    local input = vim.fn.input("Arguments: ")
+                    return vim.split(input, " +")
+                end,
+                runInTerminal = false,
             },
         }
 

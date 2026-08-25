@@ -4,17 +4,18 @@ return {
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			automatic_installation = true,
+            ensure_installed = { "tsserver" },
 		})
 
 		local lspconfig = require("lspconfig")
 
 		local servers = { "lua_ls"}
 
-		for _, server in ipairs(servers) do
-			lspconfig[server].setup({
-
-			})
-		end
+		-- for _, server in ipairs(servers) do
+		-- 	lspconfig[server].setup({
+		--
+		-- 	})
+		-- end
 	end,
 	keys = {
 		{'gd', vim.lsp.buf.definition, 'n'},

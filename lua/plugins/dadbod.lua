@@ -26,7 +26,8 @@ return {
         -- Your DBUI configuration
         local cmp = require("cmp")
         vim.api.nvim_create_autocmd("FileType", {
-            pattern = { "sql", "mysql", "plsql" },
+            -- pattern = { "sql", "mysql", "plsql" },
+            pattern = { "mysql", "plsql" },
             callback = function()
                 cmp.setup.buffer({
                     sources = {

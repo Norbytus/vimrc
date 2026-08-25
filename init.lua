@@ -1,16 +1,3 @@
-vim.lsp.config(
-    "lua_ls",
-    {
-        settings = {
-            Lua = {
-                workspace = {
-                    library = vim.api.nvim_get_runtime_file("", true)
-                }
-            }
-        }
-    }
-)
-
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -23,47 +10,22 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ { import = "plugins" } })
 
--- vim.keymap.set('i', '<leader>e', '<esc>')
--- vim.keymap.set({'n', 'i', 'v', 'c'}, '<Esc>', '<Nop>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>w', '<cmd>:w<cr>')
 
--- In your Lua config (e.g., in plugins/lsp.lua or init.lua)
-local on_attach = function(client, bufnr)
-  local keymap = vim.keymap.set
-  local opts = { buffer = bufnr, silent = true }
-
-  -- LSP keymaps
-  keymap("n", "gd", vim.lsp.buf.definition, opts)
-  keymap("n", "gD", vim.lsp.buf.declaration, opts)
-  keymap("n", "gi", vim.lsp.buf.implementation, opts)
-  keymap("n", "gr", vim.lsp.buf.references, opts)
-  keymap("n", "K", vim.lsp.buf.hover, opts)
-  keymap("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-  keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
-  keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-  keymap("n", "<leader>f", function()
-    vim.lsp.buf.format({ async = true })
-  end, opts)
-end
-
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "sql", "mysql", "plsql" },
-  callback = function()
-    cmp.setup.buffer({
-      sources = {
-        { name = "vim-dadbod-completion" },
-        { name = "buffer" },
-        { name = "luasnip" },
-      },
-    })
-  end,
-  group = autocomplete_group,
-})
--- vim.keymap.set("i", "q", "<Esc>", { noremap = true, silent = true })
--- vim.keymap.set("v", "q", "<Esc>", { noremap = true, silent = true })
--- vim.keymap.set("n", "Q", "q", { noremap = true })
-
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "sql", "mysql", "plsql" },
+--   callback = function()
+--     cmp.setup.buffer({
+--       sources = {
+--         { name = "vim-dadbod-completion" },
+--         { name = "buffer" },
+--         { name = "luasnip" },
+--       },
+--     })
+--   end,
+--   group = autocomplete_group,
+-- })
+--
 vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -80,7 +42,10 @@ vim.opt.expandtab = true
 vim.opt.splitright = true
 vim.opt.winborder = "rounded"
 vim.opt.mouse = ""
-vim.cmd [[colorscheme yorumi]]
+vim.cmd [[colorscheme kanagawa-wave]]
+
+vim.o.exrc = true
+vim.o.secure = true
 
 function get_php_container()
     -- Get project name for regex
